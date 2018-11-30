@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然ranxiaolang">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Hello World - 自然 | ranxiaolang</title>
+    <title>VNC和远程桌面的区别 - 自然 | ranxiaolang</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/19/new-hello-world/">
+    <link rel="canonical" href="http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,13 +139,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/#Virtualization" title="Virtualization">Virtualization</a>
+                        
                     </div>
-                    <h1>Hello World</h1>
+                    <h1>VNC和远程桌面的区别</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 19, 2018</span>
+                    <span class="meta">Posted by Ziran on November 29, 2018</span>
                 </div>
             </div>
         </div>
@@ -163,7 +165,19 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hello-world">Hello World</h2>
+				<h3 id="vnc和远程桌面的区别">VNC和远程桌面的区别</h3>
+<p>我们可以通过VNC(Virtual Network Computing)和远程桌面来连接到远程的计算机上，但是两者是有一定的区别的。</p>
+
+<h3 id="vnc">VNC</h3>
+<p>VNC使用的是RFB协议来做屏幕分享和远程操作的软件，由著名的AT&amp;T欧洲研究实验室开发。使用时需要客户端软件和服务器软件配合使用。</p>
+
+<h3 id="远程桌面">远程桌面</h3>
+<p>远程桌面使用RDP(Remote Desktop Protocol)远程桌面协议，大部分Windows都默认支持此协议，可以远程接入操作桌面。</p>
+
+<h3 id="rfb和rdp区别">RFB和RDP区别</h3>
+<p>RFB是在服务器端将窗口在显存中画好之后将图像传给客户端，客户端只充当一个图像解码显示的角色； RDP则将画图的工作交给了客户端，服务器需要了解客户端显示能力的具体情况，以便作出相应调整。</p>
+
+<p>RFB主要传图像，RDP主要传指令。就一般应用而言，RFB数据量太大，RDP对客户端要求较高，因此RFB适用于瘦客户端，RDP适用于低速网络。</p>
 
 
                 <hr>
@@ -173,10 +187,10 @@
 
                 <ul class="pager">
                     
-                    
-                    <li class="next">
-                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">Next Post &rarr;</a>
+                    <li class="previous">
+                        <a href="/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/" data-toggle="tooltip" data-placement="top" title="Keras：安装graphviz和pydot后出现RuntimeError：无法导入pydot">&larr; Previous Post</a>
                     </li>
+                    
                     
                 </ul>
 

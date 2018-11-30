@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然ranxiaolang">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Hello World - 自然 | ranxiaolang</title>
+    <title>Centos 配置mailx使用外部smtp发送邮件 - 自然 | ranxiaolang</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/19/new-hello-world/">
+    <link rel="canonical" href="http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,13 +139,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/#Centos" title="Centos">Centos</a>
+                        
                     </div>
-                    <h1>Hello World</h1>
+                    <h1>Centos 配置mailx使用外部smtp发送邮件</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 19, 2018</span>
+                    <span class="meta">Posted by Ziran on November 29, 2018</span>
                 </div>
             </div>
         </div>
@@ -163,7 +165,44 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hello-world">Hello World</h2>
+				<h2 id="centos-配置mailx使用外部smtp发送邮件">Centos 配置mailx使用外部smtp发送邮件</h2>
+
+<h3 id="安装mailx">安装mailx</h3>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum <span class="nb">install </span>mailx
+</code></pre></div></div>
+<h3 id="配置mailx">配置mailx</h3>
+
+<p>推荐163邮箱，当然，QQ邮箱也是可以的，PS：记得要进邮箱打开SMTP</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/mail.rc //如果不存在，则编辑/etc/nail.rc
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 在文件的末尾加入下面代码，相应帐号密码填写自己的帐号密码
+</span><span class="nb">set</span> <span class="k">from</span><span class="o">=</span><span class="s">"xxx@163.com"</span>
+<span class="nb">set</span> <span class="n">smtp</span><span class="o">=</span><span class="n">smtp</span><span class="mf">.163</span><span class="o">.</span><span class="n">com</span>
+<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">user</span><span class="o">=</span><span class="n">xxx</span>
+<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">password</span><span class="o">=</span><span class="err">邮箱密码</span>
+<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">=</span><span class="n">login</span>
+</code></pre></div></div>
+
+<h3 id="使用mailx发送邮件">使用mailx发送邮件</h3>
+
+<p>发件人名称可不添加，第二步已配置过
+假设邮件内容存储于mesg文件中，那么可以用如下2个方法：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailx -s "发件人名称 邮件标题" xxx@163.com &lt; mesg
+cat mesg | mailx -s "发件人名称 邮件标题" xxx@163.com
+</code></pre></div></div>
+<p>多个收件人之间用逗号分隔：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat mesg | mailx -s "发件人名称 邮件标题" xxx@163.com,xxx2@163.com,xxx3@163.com
+</code></pre></div></div>
+<p>也可以直接从命令行输入邮件内容：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailx -s "发件人名称 邮件标题" xxx@163.com ##输入完后回车按Ctrl+D提交发送
+echo hello word | mailx -v -s " title" xxx3@163.com
+</code></pre></div></div>
+
+<h4 id="note">NOTE:</h4>
+<p>记得要进邮箱打开SMTP
+配置好后，记住查看是否打开代理（例如翻墙VPN）,代理可能会导致Telnet不通25端口</p>
 
 
                 <hr>
@@ -173,9 +212,13 @@
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">&larr; Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">Next Post &rarr;</a>
+                        <a href="/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="Gitment评论功能接入Jekyll & Hexo教程">Next Post &rarr;</a>
                     </li>
                     
                 </ul>

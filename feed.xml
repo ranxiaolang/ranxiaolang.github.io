@@ -5,17 +5,232 @@
     <description>回到最初的梦想</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 26 Nov 2018 17:17:51 -0500</pubDate>
-    <lastBuildDate>Mon, 26 Nov 2018 17:17:51 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Nov 2018 19:27:33 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Nov 2018 19:27:33 -0500</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>Hello World</title>
-        <description>&lt;h2 id=&quot;hello-world&quot;&gt;Hello World&lt;/h2&gt;
+        <title>VNC和远程桌面的区别</title>
+        <description>&lt;h3 id=&quot;vnc和远程桌面的区别&quot;&gt;VNC和远程桌面的区别&lt;/h3&gt;
+&lt;p&gt;我们可以通过VNC(Virtual Network Computing)和远程桌面来连接到远程的计算机上，但是两者是有一定的区别的。&lt;/p&gt;
+
+&lt;h3 id=&quot;vnc&quot;&gt;VNC&lt;/h3&gt;
+&lt;p&gt;VNC使用的是RFB协议来做屏幕分享和远程操作的软件，由著名的AT&amp;amp;T欧洲研究实验室开发。使用时需要客户端软件和服务器软件配合使用。&lt;/p&gt;
+
+&lt;h3 id=&quot;远程桌面&quot;&gt;远程桌面&lt;/h3&gt;
+&lt;p&gt;远程桌面使用RDP(Remote Desktop Protocol)远程桌面协议，大部分Windows都默认支持此协议，可以远程接入操作桌面。&lt;/p&gt;
+
+&lt;h3 id=&quot;rfb和rdp区别&quot;&gt;RFB和RDP区别&lt;/h3&gt;
+&lt;p&gt;RFB是在服务器端将窗口在显存中画好之后将图像传给客户端，客户端只充当一个图像解码显示的角色； RDP则将画图的工作交给了客户端，服务器需要了解客户端显示能力的具体情况，以便作出相应调整。&lt;/p&gt;
+
+&lt;p&gt;RFB主要传图像，RDP主要传指令。就一般应用而言，RFB数据量太大，RDP对客户端要求较高，因此RFB适用于瘦客户端，RDP适用于低速网络。&lt;/p&gt;
 </description>
-        <pubDate>Mon, 19 Nov 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/11/19/new-hello-world/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/19/new-hello-world/</guid>
+        <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+        
+        <category>Virtualization</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Keras：安装graphviz和pydot后出现RuntimeError：无法导入pydot</title>
+        <description>&lt;h3 id=&quot;首先conda安装graphviz&quot;&gt;首先Conda安装graphviz：&lt;/h3&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;graphviz 
+pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pydot 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;其次在运行的py文件前面加入如下内容&quot;&gt;其次在运行的.py文件前面加入如下内容:&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PATH&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pathsep&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'C:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Users&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;10057491&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;AppData&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Local&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Continuum&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;anaconda3&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;envs&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;tensorflow&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Library&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;graphviz'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/</guid>
+        
+        <category>Anaconda</category>
+        
+        <category>Keras</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Gitment评论功能接入Jekyll &amp; Hexo教程</title>
+        <description>&lt;h3 id=&quot;前言&quot;&gt;前言&lt;/h3&gt;
+
+&lt;p&gt;之前接入的评论功能，都因为各种原因被放弃了，今天从新计划接入评论功能，所以就在了今天这篇文章。&lt;/p&gt;
+
+&lt;h3 id=&quot;评论模块&quot;&gt;评论模块&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;多说&lt;/strong&gt; - 最多用户使用的评论，但遗憾2017年6月将暂定服务；不建议新用户使用，但为旧用户保留，也感谢多说一路的陪伴；&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;网易云跟帖&lt;/strong&gt; - 网易提供的评论组件，功能比较简单，性能优秀；管理后台在查询上还不算特别智能，但足够普通用户使用；&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;畅言&lt;/strong&gt; - 搜狐提供的评论组件，功能丰富，体验优异；但必须进行域名备案。只要域名备过案就可以通过审核。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Disqus&lt;/strong&gt; - 国外使用较多的评论组件。万里长城永不倒，一枝红杏出墙来，你懂的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以上评论模块应该大家都知道，多说和网易云跟帖没有了，畅言要备案，对于对于挂靠在GitHub的博客非常的不友好，放弃！Disqus，不希望自己的博客，可以不分国界！也放弃！&lt;/p&gt;
+
+&lt;p&gt;所以，将是我们要介绍的Gitment!&lt;/p&gt;
+
+&lt;h3 id=&quot;gitment评论模块&quot;&gt;Gitment评论模块&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Gitment is a comment system based on GitHub Issues, which can be used in the frontend without any server-side implementation.&lt;/p&gt;
+
+  &lt;p&gt;Gitment 基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;想了解具体示例，可以点击查看官方Demo Page：&lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fimsun.github.io%2Fgitment%2F&quot;&gt;Gitment Demo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;具体的接入我就不在这里说了，本文末有参考链接大家可以去了解学习，主要是说一下其中的坑点。&lt;/p&gt;
+
+&lt;h3 id=&quot;gitment坑点小结&quot;&gt;Gitment坑点小结&lt;/h3&gt;
+
+&lt;h5 id=&quot;1owner-your-github-id&quot;&gt;1、owner: ‘Your GitHub ID’&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;owner: '你的 GitHub ID',&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;可以是你的GitHub用户名，也可以是github id，建议直接用GitHub用户名就可以。&lt;/p&gt;
+
+&lt;h5 id=&quot;2repo-the-repo-to-store-comments&quot;&gt;2、repo: ‘The repo to store comments&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;repo: '存储评论的 github repo'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;这个是你要存储评论内容的仓库名，可以与博客下的仓库，也可以新建一个仓库专门存储评论内容的。&lt;/p&gt;
+
+&lt;h5 id=&quot;3error-not-found问题&quot;&gt;3、Error: Not Found问题&lt;/h5&gt;
+
+&lt;p&gt;owner或者repo配置错误了，注意名字和仓库名字的大小写。&lt;/p&gt;
+
+&lt;h5 id=&quot;4error-comments-not-initialized&quot;&gt;4、Error: Comments Not Initialized&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在注册OAuth Application这个步骤中，给Authorization callback URL指定的地址错了&lt;/li&gt;
+  &lt;li&gt;还没有在该页面的Gitment评论区登陆GitHub账号&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果还是不行，可以参考另一个情况 &lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2Fimsun%2Fgitment%2Fissues%2F95&quot;&gt;Error: Comments Not Initialized · Issue #95 · imsun/gitment&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;5errorvalidation-failed&quot;&gt;5、Error：validation failed&lt;/h5&gt;
+
+&lt;p&gt;issue的标签label有长度限制！labels的最大长度限制是50个字符。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;id: '页面 ID', // 可选。默认为 location.href&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;这个id的作用，就是针对一个文章有唯一的标识来判断这篇本章。&lt;/p&gt;
+
+&lt;p&gt;在issues里面，可以发现是根据网页标题来新建issues的，然后每个issues有两个labels（标签），一个是gitment，另一个就是id。&lt;/p&gt;
+
+&lt;p&gt;所以明白了原理后，就是因为id太长，导致初始化失败，现在就是要让id保证在50个字符内。&lt;/p&gt;
+
+&lt;p&gt;对应配置的id为：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;id: '&amp;lt;%= page.title %&amp;gt;'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;如果用网页标题也不能保证在50个字符！
+最后，我用文章的时间，这样长度是保证在50个字符内，完美解决！（避免了文章每次更新标题或路径时，会重新创建一个issue评论的问题。）&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;id: '&amp;lt;%= page.date %&amp;gt;'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;6gitment的汉化&quot;&gt;6、gitment的汉化&lt;/h5&gt;
+
+&lt;p&gt;只需到模板里将原来定义CSS和JS的那两行改成：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;https://billts.site/extra_css/gitment.css&quot;&amp;gt;
+&amp;lt;script src=&quot;https://billts.site/js/gitment.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;即可。来源：&lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2Fimsun%2Fgitment%2Fissues%2F104&quot;&gt;https://github.com/imsun/gitment/issues/104&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;7所有文章一键初始化评论&quot;&gt;7、所有文章一键初始化评论&lt;/h5&gt;
+
+&lt;p&gt;配置正确的文章，第一次显示，提示还没有初始化：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/11/30/5c007d29f22e0.png&quot; alt=&quot;99517-c690c994c6e43496.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;文章作者需要登陆GitHub授权后，会显示初始化按钮(注意，不要多点按钮，否则issues出现多条一样的)：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/11/30/5c007d29f23fb.png&quot; alt=&quot;99517-bddc67793047456b.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;点击初始化按钮后，如果正常就会出现：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/11/30/5c007d29a5614.png&quot; alt=&quot;99517-21a83b5ea0ee7f78.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;关于自动初始化所有文章的功能，到本文编写时，还没有一个完善的解决方法，就是用脚本来执行自动化，有需要的可以详细了解：&lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2Fimsun%2Fgitment%2Fissues%2F5&quot;&gt;https://github.com/imsun/gitment/issues/5&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;8请保持克制切勿滥用&quot;&gt;8、请保持克制，切勿滥用。&lt;/h5&gt;
+
+&lt;p&gt;作者提醒使用本项目的用户，请保持克制，切勿滥用。&lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fimsun.net%2Fposts%2Fgitment-introduction%2F&quot;&gt;详见 Gitment：使用 GitHub Issues 搭建评论系统&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;9订阅issue&quot;&gt;9、订阅issue&lt;/h5&gt;
+
+&lt;p&gt;issue订阅，有新评论时就可以通过邮件提醒，这个功能是把双刃剑，因为有些垃圾订阅邮件骚扰，大家看着用吧。&lt;/p&gt;
+
+&lt;h3 id=&quot;总结&quot;&gt;总结&lt;/h3&gt;
+
+&lt;p&gt;Gitment目前来说，已经解决了一个博客简单的评论功能，点赞 / 有完整的 Markdown / GFM 和代码高亮支持!&lt;/p&gt;
+
+&lt;p&gt;通过Gitment至少可以证明一点，生产力的发展有无限可能，环境的限制，会有的各种奇异的想法，或者奇异的东西出现，Gitment就是一个完美的证明，充分解决了一个简单博客的评论功能。另一方面，与国内的生活要求希望大家能够遵守规则，让GitHub和Gitment在我们生活中快乐成长！&lt;/p&gt;
+</description>
+        <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/</guid>
+        
+        <category>Gitment</category>
+        
+        <category>Jekyll</category>
+        
+        <category>Hexo</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Centos 配置mailx使用外部smtp发送邮件</title>
+        <description>&lt;h2 id=&quot;centos-配置mailx使用外部smtp发送邮件&quot;&gt;Centos 配置mailx使用外部smtp发送邮件&lt;/h2&gt;
+
+&lt;h3 id=&quot;安装mailx&quot;&gt;安装mailx&lt;/h3&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mailx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;配置mailx&quot;&gt;配置mailx&lt;/h3&gt;
+
+&lt;p&gt;推荐163邮箱，当然，QQ邮箱也是可以的，PS：记得要进邮箱打开SMTP&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/mail.rc //如果不存在，则编辑/etc/nail.rc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 在文件的末尾加入下面代码，相应帐号密码填写自己的帐号密码
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;xxx@163.com&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.163&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xxx&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;邮箱密码&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;login&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;使用mailx发送邮件&quot;&gt;使用mailx发送邮件&lt;/h3&gt;
+
+&lt;p&gt;发件人名称可不添加，第二步已配置过
+假设邮件内容存储于mesg文件中，那么可以用如下2个方法：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mailx -s &quot;发件人名称 邮件标题&quot; xxx@163.com &amp;lt; mesg
+cat mesg | mailx -s &quot;发件人名称 邮件标题&quot; xxx@163.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;多个收件人之间用逗号分隔：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat mesg | mailx -s &quot;发件人名称 邮件标题&quot; xxx@163.com,xxx2@163.com,xxx3@163.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;也可以直接从命令行输入邮件内容：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mailx -s &quot;发件人名称 邮件标题&quot; xxx@163.com ##输入完后回车按Ctrl+D提交发送
+echo hello word | mailx -v -s &quot; title&quot; xxx3@163.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;note&quot;&gt;NOTE:&lt;/h4&gt;
+&lt;p&gt;记得要进邮箱打开SMTP
+配置好后，记住查看是否打开代理（例如翻墙VPN）,代理可能会导致Telnet不通25端口&lt;/p&gt;
+</description>
+        <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+        
+        <category>Centos</category>
         
         
       </item>
@@ -46,9 +261,24 @@ jupyter lab  –ip=0.0.0.0 –no-browser –allow-root&lt;/p&gt;
 &lt;p&gt;不输出日志 jupyter lab  –ip=0.0.0.0 –no-browser –allow-root &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;
 jupyter lab &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/p&gt;
 </description>
+        <pubDate>Tue, 20 Nov 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/11/20/jupyter-lab-config-raspi/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/20/jupyter-lab-config-raspi/</guid>
+        
+        <category>Jupyter</category>
+        
+        <category>Raspberry Pi</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Hello World</title>
+        <description>&lt;h2 id=&quot;hello-world&quot;&gt;Hello World&lt;/h2&gt;
+</description>
         <pubDate>Mon, 19 Nov 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/11/19/jupyter-lab-config-raspi/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/19/jupyter-lab-config-raspi/</guid>
+        <link>http://localhost:4000/2018/11/19/new-hello-world/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/19/new-hello-world/</guid>
         
         
       </item>

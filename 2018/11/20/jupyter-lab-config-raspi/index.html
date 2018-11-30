@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然ranxiaolang">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Hello World - 自然 | ranxiaolang</title>
+    <title>Jupyter Lab Config on Raspberry Pi - 自然 | ranxiaolang</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/19/new-hello-world/">
+    <link rel="canonical" href="http://localhost:4000/2018/11/20/jupyter-lab-config-raspi/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,13 +139,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/#Jupyter" title="Jupyter">Jupyter</a>
+                        
+                        <a class="tag" href="/tags/#Raspberry Pi" title="Raspberry Pi">Raspberry Pi</a>
+                        
                     </div>
-                    <h1>Hello World</h1>
+                    <h1>Jupyter Lab Config on Raspberry Pi</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 19, 2018</span>
+                    <span class="meta">Posted by Ziran on November 20, 2018</span>
                 </div>
             </div>
         </div>
@@ -163,7 +167,29 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hello-world">Hello World</h2>
+				<h2 id="to-activate-this-environment-use">To activate this environment, use</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ conda activate base
+ $ conda activate tensorflow
+</code></pre></div></div>
+
+<h4 id="树莓派-source--activate-tensorflow">树莓派： source  activate tensorflow</h4>
+
+<h2 id="to-deactivate-an-active-environment-use">To deactivate an active environment, use</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ conda deactivate
+</code></pre></div></div>
+
+<h4 id="树莓派-source--deactivate-tensorflow">树莓派： source  deactivate tensorflow</h4>
+
+<p>conda install jupyter notebook
+conda install jupyterlab</p>
+
+<p>jupyter notebook  –ip=0.0.0.0 –no-browser –allow-root
+jupyter lab  –ip=0.0.0.0 –no-browser –allow-root</p>
+
+<p>不输出日志 jupyter lab  –ip=0.0.0.0 –no-browser –allow-root &gt;/dev/null 2&gt;&amp;1 &amp;
+jupyter lab &gt;/dev/null 2&gt;&amp;1 &amp;</p>
 
 
                 <hr>
@@ -173,9 +199,13 @@
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2018/11/19/new-hello-world/" data-toggle="tooltip" data-placement="top" title="Hello World">&larr; Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">Next Post &rarr;</a>
+                        <a href="/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/" data-toggle="tooltip" data-placement="top" title="Centos 配置mailx使用外部smtp发送邮件">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
