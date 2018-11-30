@@ -3,10 +3,10 @@
   <channel>
     <title>自然</title>
     <description>回到最初的梦想</description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Nov 2018 20:06:00 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Nov 2018 20:06:00 -0500</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 29 Nov 2018 20:07:18 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Nov 2018 20:07:18 -0500</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -26,8 +26,8 @@
 &lt;p&gt;RFB主要传图像，RDP主要传指令。就一般应用而言，RFB数据量太大，RDP对客户端要求较高，因此RFB适用于瘦客户端，RDP适用于低速网络。&lt;/p&gt;
 </description>
         <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
-        <link>/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
-        <guid isPermaLink="true">/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+        <link>http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
         
         <category>Virtualization</category>
         
@@ -47,8 +47,8 @@ pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pydot
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
-        <link>/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/</link>
-        <guid isPermaLink="true">/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/</guid>
+        <link>http://localhost:4000/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/</guid>
         
         <category>Anaconda</category>
         
@@ -173,8 +173,8 @@ pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pydot
 &lt;p&gt;通过Gitment至少可以证明一点，生产力的发展有无限可能，环境的限制，会有的各种奇异的想法，或者奇异的东西出现，Gitment就是一个完美的证明，充分解决了一个简单博客的评论功能。另一方面，与国内的生活要求希望大家能够遵守规则，让GitHub和Gitment在我们生活中快乐成长！&lt;/p&gt;
 </description>
         <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
-        <link>/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/</link>
-        <guid isPermaLink="true">/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/</guid>
+        <link>http://localhost:4000/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/</guid>
         
         <category>Gitment</category>
         
@@ -227,8 +227,8 @@ echo hello word | mailx -v -s &quot; title&quot; xxx3@163.com
 配置好后，记住查看是否打开代理（例如翻墙VPN）,代理可能会导致Telnet不通25端口&lt;/p&gt;
 </description>
         <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
-        <link>/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
-        <guid isPermaLink="true">/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+        <link>http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
         
         <category>Centos</category>
         
@@ -262,8 +262,8 @@ jupyter lab  –ip=0.0.0.0 –no-browser –allow-root&lt;/p&gt;
 jupyter lab &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/p&gt;
 </description>
         <pubDate>Tue, 20 Nov 2018 00:00:00 -0500</pubDate>
-        <link>/2018/11/20/jupyter-lab-config-raspi/</link>
-        <guid isPermaLink="true">/2018/11/20/jupyter-lab-config-raspi/</guid>
+        <link>http://localhost:4000/2018/11/20/jupyter-lab-config-raspi/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/20/jupyter-lab-config-raspi/</guid>
         
         <category>Jupyter</category>
         
@@ -277,8 +277,8 @@ jupyter lab &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/p&gt;
         <description>&lt;h2 id=&quot;hello-world&quot;&gt;Hello World&lt;/h2&gt;
 </description>
         <pubDate>Mon, 19 Nov 2018 00:00:00 -0500</pubDate>
-        <link>/2018/11/19/new-hello-world/</link>
-        <guid isPermaLink="true">/2018/11/19/new-hello-world/</guid>
+        <link>http://localhost:4000/2018/11/19/new-hello-world/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/19/new-hello-world/</guid>
         
         
       </item>
