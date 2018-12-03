@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然ranxiaolang">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Centos 配置mailx使用外部smtp发送邮件 - 自然 | ranxiaolang</title>
+    <title>Django博客开发：通过django-allauth实现第三方账号登录教程 - 自然 | ranxiaolang</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">
+    <link rel="canonical" href="http://localhost:4000/%E6%95%99%E7%A8%8B/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,15 +139,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Centos" title="Centos">Centos</a>
+                        <a class="tag" href="/tags/#Django" title="Django">Django</a>
                         
                     </div>
-                    <h1>Centos 配置mailx使用外部smtp发送邮件</h1>
+                    <h1>Django博客开发：通过django-allauth实现第三方账号登录教程</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 29, 2018</span>
+                    <span class="meta">Posted by Ziran on December 1, 2018</span>
                 </div>
             </div>
         </div>
@@ -165,44 +165,116 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="centos-配置mailx使用外部smtp发送邮件">Centos 配置mailx使用外部smtp发送邮件</h2>
+				<p>因为需要加入博客的用户登录、注册系统，为了让网站支持第三方登录，所以只用使用<strong>django-allauth</strong>，根据其官方文档这里：<strong><a href="https://link.jianshu.com?t=https://django-allauth.readthedocs.io/en/latest/index.html">https://django-allauth.readthedocs.io/en/latest/index.html</a></strong>），同时支持本地和第三方账号（Github，百度、微博、微信等等。。），集成了邮箱验证、密码修改、本地账号关联（多个）第三方账号等各种功能，真是厉害了。</p>
 
-<h3 id="安装mailx">安装mailx</h3>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum <span class="nb">install </span>mailx
+<h2 id="开发环境python-36django-213">开发环境：python 3.6、django 2.1.3</h2>
+
+<h2 id="准备工作">准备工作：</h2>
+
+<p><strong>安装</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>django-allauth
 </code></pre></div></div>
-<h3 id="配置mailx">配置mailx</h3>
+<!--more-->
+<p><strong>project/settings.py设置</strong></p>
 
-<p>推荐163邮箱，当然，QQ邮箱也是可以的，PS：记得要进邮箱打开SMTP</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/mail.rc //如果不存在，则编辑/etc/nail.rc
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSTALLED_APPS = [# 必须安装的app
+       'django.contrib.auth', 
+       'django.contrib.sites', 'allauth',
+       'allauth.account',   
+       'allauth.socialaccount',
+      # 下面是第三方账号相关的，比如我选了weibo和github 
+      'allauth.socialaccount.providers.weibo', 
+      'allauth.socialaccount.providers.github',
+]
+ # django-allauth相关设置
+AUTHENTICATION_BACKENDS = (
+      # django admin所使用的用户登录与django-allauth无关 
+      'django.contrib.auth.backends.ModelBackend',
+      # `allauth` specific authentication methods, such as login by e-mail 
+      'allauth.account.auth_backends.AuthenticationBackend',
+)
+# 前面我们app里添加了django.contrib.sites,需要设置
+SITE_IDSITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 在文件的末尾加入下面代码，相应帐号密码填写自己的帐号密码
-</span><span class="nb">set</span> <span class="k">from</span><span class="o">=</span><span class="s">"xxx@163.com"</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">=</span><span class="n">smtp</span><span class="mf">.163</span><span class="o">.</span><span class="n">com</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">user</span><span class="o">=</span><span class="n">xxx</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">password</span><span class="o">=</span><span class="err">邮箱密码</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">=</span><span class="n">login</span>
+<p><code class="highlighter-rouge">ACCOUNT_AUTHENTICATION_METHOD = 'username_email'</code>的作用是当用户登录时，既可以使用用户名也可以使用email， 其他可选的值是 <strong>“username”</strong>、<strong>“email”</strong> ，<code class="highlighter-rouge">ACCOUNT_EMAIL_REQUIRED = True</code>要求用户注册时必须填写email，默认False，email是选填的。</p>
+
+<p><strong>project/urls.py 里include allauth的urls</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>urlpatterns = [ url(r'^accounts/', include('allauth.urls')),]
 </code></pre></div></div>
 
-<h3 id="使用mailx发送邮件">使用mailx发送邮件</h3>
+<p>设置好后，我们就可以用’accounts/login’ 访问登录页面， ‘accounts/logout’ 注销， 其他的可以去 <strong>allauth/account/urls.py</strong>查看。</p>
 
-<p>发件人名称可不添加，第二步已配置过
-假设邮件内容存储于mesg文件中，那么可以用如下2个方法：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailx -s "发件人名称 邮件标题" xxx@163.com &lt; mesg
-cat mesg | mailx -s "发件人名称 邮件标题" xxx@163.com
-</code></pre></div></div>
-<p>多个收件人之间用逗号分隔：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat mesg | mailx -s "发件人名称 邮件标题" xxx@163.com,xxx2@163.com,xxx3@163.com
-</code></pre></div></div>
-<p>也可以直接从命令行输入邮件内容：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailx -s "发件人名称 邮件标题" xxx@163.com ##输入完后回车按Ctrl+D提交发送
-echo hello word | mailx -v -s " title" xxx3@163.com
+<p>以上基本设置后，需要同步数据库 <code class="highlighter-rouge">python manage.py migrate runserver</code>, 访问登录页面，allauth提供的模板非常简陋， 是这样的</p>
+
+<p><img src="https://i.loli.net/2018/12/02/5c02e791028bc.png" alt="201144936.png" /></p>
+
+<p>我们可以使用自己制作的模板，在<strong>project/templates/account</strong>下创建login.html即可override allauth自带的模板，allauth自带的模板放在<strong>allauth/templates/account</strong>下， 我们只需要在项目templates/account下创建相同名字的html即可覆盖。</p>
+
+<h2 id="测试">测试</h2>
+
+<p><strong>下面我们去注册页面test一下，先注册一个本地账号</strong></p>
+
+<p>填写完注册信息后，却出现这样一个错误</p>
+
+<p><img src="https://i.loli.net/2018/12/02/5c02e7b02ee3c.png" alt="107.png" /></p>
+
+<p>出现此错误的原因，官方文档也有说明，这是因为注册账号后，系统会自动发一封邮件来激活账号，但是我们还有发送邮件相关的设置。</p>
+
+<p>django默认使用SMTP发送邮件，在project/settings.py如下设置：</p>
+<div class="language-django highlighter-rouge"><div class="highlight"><pre class="highlight"><code># SMTP服务器，我使用的是sendclound的服务
+EMAIL_HOST = 'smtp.sendcloud.net'
+EMAIL_HOST_USER = '用户名'
+EMAIL_HOST_PASSWORD = '对应的API key或者密码
+'EMAIL_PORT = 25
+# 是否使用了SSL 或者TLS
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
+# 默认发件人，不设置的话django默认使用的webmaster@localhost
+DEFAULT_FROM_EMAIL = 'Aaron-Zhao <span class="ni">&amp;lt;</span>noreply@aaron-zhao.com<span class="ni">&amp;gt;</span>
 </code></pre></div></div>
 
-<h4 id="note">NOTE:</h4>
-<p>记得要进邮箱打开SMTP
-配置好后，记住查看是否打开代理（例如翻墙VPN）,代理可能会导致Telnet不通25端口</p>
+<p>完成以上设置后，注册账号是我们就可以收到邮件了，关于邮件的其他详细设置，请参照<strong><a href="https://link.jianshu.com?t=https://docs.djangoproject.com/en/1.10/topics/email/">django的官方文档</a></strong></p>
+
+<p>allauth默认的设置，当用户登录时会重定向到  /accounts/profile，这个页面allauth没有做，因为报错page not found，这个页面需要我们自己完成（请戳：<strong><a href="https://link.jianshu.com?t=http://www.aaron-zhao.com/post/5/">django博客开发：添加用户资料页面和头像上传功能</a></strong>）。与此相关的参数是<strong>LOGIN_REDIRECT_URL</strong></p>
+
+<p>在project/settings.py设置 **LOGIN_REDIRECT_URL = ‘/’ **，这样用户登录后的页面就会跳转到首页，而不是用户profile页面。</p>
+
+<p><strong>下面我们去测试一下第三方账号登录，这里以github为例</strong>，</p>
+
+<p><strong><a href="https://link.jianshu.com?t=https://github.com/settings/applications/new">Github OAuth注册页面：https://github.com/settings/applications/new</a></strong></p>
+
+<p>要注意将回调地址<strong>callback URL</strong>设置为 <strong><a href="https://link.jianshu.com?t=http://127.0.0.1:8000/accounts/github/login/callback/">http://127.0.0.1:8000/accounts/github/login/callback/</a>，</strong>完成注册后 我们会获得一个Cliend ID 和 Client Secret，后面我们会用到</p>
+
+<p>先进入admin后台，会发现增加了social accounts和站点</p>
+
+<p><img src="https://i.loli.net/2018/12/02/5c02e7c801608.png" alt="11145251.png" /></p>
+
+<p>点开站点管理，将example.com改为我们博客的域名，在开发环境下，我们用127.0.0.1:8000</p>
+
+<p><img src="https://i.loli.net/2018/12/02/5c02e7dc1823d.png" alt="201145301.png" /></p>
+
+<p>点击SOCIAL ACCOUNTS下的Social application，增加一个application，如下图所示</p>
+
+<p>provider选Github，这里的provider就是我们在INSTALLED_APP里增加的socialaccount.provider，client id 和secret key 我们在github注册应用里获得了，将sites加入到右边 选中的sites</p>
+
+<p><img src="https://i.loli.net/2018/12/02/5c02e7ee96095.png" alt="145409.png" /></p>
+
+<p>完成以上设置后，注销，然后回到登录页面，选中github登录，授权应用即可，成功登录后，邮箱里也会收到一份激活邮件，这是因为django-allauth会自动为我们添加一个本地账号，根据你的social account用户名和email。</p>
+
+<h2 id="其他相关设置">其他相关设置</h2>
+
+<p>project/settings.py</p>
+
+<p><code class="highlighter-rouge">ACCOUNT_EMAIL_VERIFICATION = 'optional' / 'mandatory' / 'none'</code> 默认值是’optional’，当其等于’mandatory’时，在email未验证之前，本地注册的用户无法登陆。’optional’ 和 ‘none’ 则不要求必须验证邮箱，两者区别是’optional’ 依然会发送验证邮件，而’none’ 则不会</p>
+
+<p><code class="highlighter-rouge">SOCIALACCOUNT_EMAIL_VERIFICATION = 'optional' / 'mandatory' / 'none'</code>与ACCOUNT_EMAIL_VERIFICATION 同理，作用于第三方账号的注册，默认值等于前者，</p>
+
+<p><code class="highlighter-rouge">LOGIN_URL = '/accounts/login'</code> 当用户验证邮件里的验证链接后，如果当前没有登录的用户，则会指向LOGIN_URL</p>
 
 
                 <hr>
@@ -213,12 +285,12 @@ echo hello word | mailx -v -s " title" xxx3@163.com
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">&larr; Previous Post</a>
+                        <a href="/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/" data-toggle="tooltip" data-placement="top" title="VNC和远程桌面的区别">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="Gitment评论功能接入Jekyll & Hexo教程">Next Post &rarr;</a>
+                        <a href="/%E6%95%99%E7%A8%8B/2018/12/01/Sublime-text3-3176%E7%89%88%E6%9C%AC%E6%BF%80%E6%B4%BB/" data-toggle="tooltip" data-placement="top" title="Sublime-text3-3176版本激活">Next Post &rarr;</a>
                     </li>
                     
                 </ul>

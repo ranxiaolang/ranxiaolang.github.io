@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然ranxiaolang">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Centos 配置mailx使用外部smtp发送邮件 - 自然 | ranxiaolang</title>
+    <title>基于人工智能的树莓派人脸识别系统(Intelligent Facial Recognition System) - 自然 | ranxiaolang</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">
+    <link rel="canonical" href="http://localhost:4000/%E6%BA%90%E7%A0%81/github/2018/12/01/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F(Intelligent-Facial-Recognition-System)/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,15 +139,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Centos" title="Centos">Centos</a>
+                        <a class="tag" href="/tags/#Hardware" title="Hardware">Hardware</a>
+                        
+                        <a class="tag" href="/tags/#Raspberry Pi" title="Raspberry Pi">Raspberry Pi</a>
                         
                     </div>
-                    <h1>Centos 配置mailx使用外部smtp发送邮件</h1>
+                    <h1>基于人工智能的树莓派人脸识别系统(Intelligent Facial Recognition System)</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 29, 2018</span>
+                    <span class="meta">Posted by Ziran on December 1, 2018</span>
                 </div>
             </div>
         </div>
@@ -165,44 +167,202 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="centos-配置mailx使用外部smtp发送邮件">Centos 配置mailx使用外部smtp发送邮件</h2>
+				<p>This is a project of the face recognizer with Movidius on RaspberryPi 3B+ platform. The project also uses Django and Django REST framework which providing the web platform. The project would like to build a safety and intelligent face recognition system in AI era.</p>
 
-<h3 id="安装mailx">安装mailx</h3>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum <span class="nb">install </span>mailx
+<p>If you appreciate the content 📖, support projects visibility, give⭐</p>
+
+<p>GitHub: https://github.com/nature1995/Face_Recognition_System</p>
+<h1 id="compatibility">Compatibility</h1>
+<p>The code is tested using Tensorflow r1.7 and Movidius NCSDK2 under Debin 2018-06-27（Kernel version:4.14） with django 2.1.1 and Python 3.5.</p>
+
+<h1 id="real-product-images">Real Product Images</h1>
+<p><img src="https://github.com/nature1995/Face_Recognition_System/raw/master/image/2.jpg" alt="image" />
+ <img src="https://github.com/nature1995/Face_Recognition_System/raw/master/image/1.jpg" alt="image" />
+ <img src="https://github.com/nature1995/Face_Recognition_System/raw/master/image/3.jpg" alt="image" />
+<!--more--></p>
+
+<h1 id="requirements">Requirements</h1>
+
+<ul>
+  <li>Logitech HD Webcam C270</li>
+  <li>Micro SD Card 32G</li>
+  <li>Raspberry Pi 3 B+</li>
+  <li>Intel Movidius Neural Compute Stick</li>
+</ul>
+
+<p>The code requires <a href="https://www.python.org/download/releases/3.5/">Python 3.5</a>, <a href="https://www.tensorflow.org/install/">Tensorflow 1.7</a>, as well as the following python libraries:</p>
+
+<ul>
+  <li>Pillow</li>
+  <li>django</li>
+  <li>django-allauth  0.37.1</li>
+  <li>django-widget-tweaks  1.4.3</li>
+  <li>pip  18.0</li>
+  <li>qrcode  6.0</li>
+  <li>setuptools  40.4.3</li>
+</ul>
+
+<p>Those modules can be installed using: <code class="highlighter-rouge">pip3 install xxx</code>.</p>
+
+<h2 id="neural-compute-application-zoo">Neural Compute Application Zoo</h2>
+
+<p>This repository is a place for any interested developers to share their projects (code and Neural Network content) that make use of the Intel® Movidius™ Neural Compute Stick (Intel® Movidius™ NCS) and associated <a href="http://www.github.com/movidius/ncsdk">Intel® Movidius™ Neural Compute Software Development Kit</a>.</p>
+
+<p>You can use the following url(<a href="https://github.com/movidius/ncappzoo">NC App Zoo</a>) or git command to use the ncsdk2 branch of the NC App Zoo repo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> ncsdk2 https://github.com/movidius/ncappzoo.git
 </code></pre></div></div>
-<h3 id="配置mailx">配置mailx</h3>
 
-<p>推荐163邮箱，当然，QQ邮箱也是可以的，PS：记得要进邮箱打开SMTP</p>
+<h2 id="install-django-and-django-rest-framework">Install Django and Django REST framework</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+pip3 <span class="nt">-V</span>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/mail.rc //如果不存在，则编辑/etc/nail.rc
+<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> setuptools
+
+<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> django
+
+<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> djangorestframework
+
+<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> django-filter
+
+<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> markdown
+
+<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> requests
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 在文件的末尾加入下面代码，相应帐号密码填写自己的帐号密码
-</span><span class="nb">set</span> <span class="k">from</span><span class="o">=</span><span class="s">"xxx@163.com"</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">=</span><span class="n">smtp</span><span class="mf">.163</span><span class="o">.</span><span class="n">com</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">user</span><span class="o">=</span><span class="n">xxx</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">password</span><span class="o">=</span><span class="err">邮箱密码</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">=</span><span class="n">login</span>
+<h2 id="install-adafruit_python_dht-library">Install Adafruit_Python_DHT library</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+
+
+<span class="nb">cd </span>Adafruit_Python_DHT
+
+<span class="nb">sudo </span>python3 setup.py <span class="nb">install
+
+cd</span>
+</code></pre></div></div>
+<h2 id="install-adafruit_python_bmp-library">Install Adafruit_Python_BMP library</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/adafruit/Adafruit_Python_BMP.git
+
+<span class="nb">cd </span>Adafruit_Python_BMP
+
+<span class="nb">sudo </span>python3 setup.py <span class="nb">install
+
+cd</span>
+</code></pre></div></div>
+<h2 id="install-psutil-process-and-system-utilities">Install psutil (process and system utilities)</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pip3 <span class="nb">install </span>psutil
+</code></pre></div></div>
+<h1 id="rpi-mjpg-streamer">rpi-mjpg-streamer</h1>
+
+<p>Instructions and helper scripts for running mjpg-streamer on Raspberry Pi.</p>
+
+<h2 id="a-setup-mjpg-streamer">A. Setup mjpg-streamer</h2>
+
+<h3 id="enable-raspberry-pi-camera-module-from-raspi-config">Enable Raspberry Pi Camera module from raspi-config</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo raspi-config
 </code></pre></div></div>
 
-<h3 id="使用mailx发送邮件">使用mailx发送邮件</h3>
+<h3 id="install-necessary-packages-for-mjpg-streamer">Install necessary packages for mjpg-streamer</h3>
 
-<p>发件人名称可不添加，第二步已配置过
-假设邮件内容存储于mesg文件中，那么可以用如下2个方法：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailx -s "发件人名称 邮件标题" xxx@163.com &lt; mesg
-cat mesg | mailx -s "发件人名称 邮件标题" xxx@163.com
-</code></pre></div></div>
-<p>多个收件人之间用逗号分隔：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat mesg | mailx -s "发件人名称 邮件标题" xxx@163.com,xxx2@163.com,xxx3@163.com
-</code></pre></div></div>
-<p>也可以直接从命令行输入邮件内容：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailx -s "发件人名称 邮件标题" xxx@163.com ##输入完后回车按Ctrl+D提交发送
-echo hello word | mailx -v -s " title" xxx3@163.com
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get update
+$ sudo apt-get install build-essential libjpeg8-dev imagemagick libv4l-dev git cmake uvcdynctrl
 </code></pre></div></div>
 
-<h4 id="note">NOTE:</h4>
-<p>记得要进邮箱打开SMTP
-配置好后，记住查看是否打开代理（例如翻墙VPN）,代理可能会导致Telnet不通25端口</p>
+<h3 id="build-mjpg-streamer">Build mjpg-streamer</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
+$ git clone https://github.com/jacksonliam/mjpg-streamer
+$ cd mjpg-streamer/mjpg-streamer-experimental
+$ cmake -DCMAKE_INSTALL_PREFIX:PATH=.. .
+$ make install
+</code></pre></div></div>
+
+<h3 id="setup-video4linux-for-raspberry-pi-camera-module">Setup video4linux for Raspberry Pi Camera module</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo modprobe bcm2835-v4l2
+$ sudo vi /etc/modules
+
+# add following line:
+bcm2835-v4l2
+
+$ sudo vi /boot/config.txt
+
+# add following line if you want to disable RPi camera's LED:
+disable_camera_led=1
+</code></pre></div></div>
+
+<h3 id="add-yourself-to-the-video-group">Add yourself to the video group</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo usermod -a -G video $USER
+</code></pre></div></div>
+
+<h2 id="b-run-mjpg-streamer">B. Run mjpg-streamer</h2>
+
+<h3 id="1-clone-this-repository">1. Clone this repository</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/meinside/rpi-mjpg-streamer.git
+</code></pre></div></div>
+
+<h3 id="2-a-run-mjpg-streamer-from-the-shell-directly">2-a. Run mjpg-streamer from the shell directly</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># copy &amp; edit run-mjpg-streamer.sh to your environment or needs
+$ cp rpi-mjpg-streamer/run-mjpg-streamer.sh.sample somewhere/run-mjpg-streamer.sh
+$ vi somewhere/run-mjpg-streamer.sh
+
+# then run
+$ somewhere/run-mjpg-streamer.sh
+</code></pre></div></div>
+
+<h3 id="2-b-or-run-mjpg-streamer-as-a-service">2-b. Or run mjpg-streamer as a service</h3>
+
+<h4 id="systemd">systemd</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># copy &amp; edit systemd/mjpg-streamer.service file,
+$ sudo cp rpi-mjpg-streamer/systemd/mjpg-streamer.service.sample /lib/systemd/system/mjpg-streamer.service
+$ sudo vi /lib/systemd/system/mjpg-streamer.service
+
+# then register as a service
+$ sudo systemctl enable mjpg-streamer.service
+
+# or remove it
+$ sudo systemctl disable mjpg-streamer.service
+
+# and start/stop it
+$ sudo systemctl start mjpg-streamer.service
+$ sudo systemctl stop mjpg-streamer.service
+</code></pre></div></div>
+
+<h2 id="c-connect">C. Connect</h2>
+
+<p>Connect through the web browser:</p>
+
+<p><img src="https://github.com/nature1995/Face_Recognition_System/raw/master/image/IFRS01.png" alt="image" /></p>
+
+<p>Most modern browsers(including mobile browsers like Safari and Chrome) will show the live stream immediately.</p>
+
+<h1 id="notice">Notice</h1>
+
+<h2 id="virtualenv">Virtualenv</h2>
+
+<p>pip3 install virtualenv</p>
+
+<p>Run Virtualenv</p>
+
+<p>source venv/bin/activate</p>
+
+<h2 id="sqlite3-数据库文件dbsqlite3-权限-666">sqlite3 数据库文件db.sqlite3 权限 666</h2>
+
+<p>chmod 666 db.sqlite3</p>
+
+<h2 id="django-所在文件夹-权限-775">django 所在文件夹 权限 775</h2>
+
+<p>chmod 777 xxx</p>
+
+<h1 id="citation">Citation</h1>
+
+<p>Just can be used for non-business projects.</p>
 
 
                 <hr>
@@ -213,12 +373,12 @@ echo hello word | mailx -v -s " title" xxx3@163.com
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">&larr; Previous Post</a>
+                        <a href="/%E6%95%99%E7%A8%8B/2018/12/01/Sublime-text3-3176%E7%89%88%E6%9C%AC%E6%BF%80%E6%B4%BB/" data-toggle="tooltip" data-placement="top" title="Sublime-text3-3176版本激活">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="Gitment评论功能接入Jekyll & Hexo教程">Next Post &rarr;</a>
+                        <a href="/%E6%BA%90%E7%A0%81/github/2018/12/01/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E7%BB%84-%E5%8E%86%E5%B9%B4%E6%AF%94%E8%B5%9B%E8%AF%95%E9%A2%98%E4%B8%8E%E6%BA%90%E7%A0%81/" data-toggle="tooltip" data-placement="top" title="蓝桥杯嵌入式与开发组——历年比赛试题与源码">Next Post &rarr;</a>
                     </li>
                     
                 </ul>

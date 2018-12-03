@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然ranxiaolang">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Centos 配置mailx使用外部smtp发送邮件 - 自然 | ranxiaolang</title>
+    <title>Sublime-text3-3176版本激活 - 自然 | ranxiaolang</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">
+    <link rel="canonical" href="http://localhost:4000/%E6%95%99%E7%A8%8B/2018/12/01/Sublime-text3-3176%E7%89%88%E6%9C%AC%E6%BF%80%E6%B4%BB/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,15 +139,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Centos" title="Centos">Centos</a>
+                        <a class="tag" href="/tags/#Software" title="Software">Software</a>
                         
                     </div>
-                    <h1>Centos 配置mailx使用外部smtp发送邮件</h1>
+                    <h1>Sublime-text3-3176版本激活</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 29, 2018</span>
+                    <span class="meta">Posted by Ziran on December 1, 2018</span>
                 </div>
             </div>
         </div>
@@ -165,44 +165,31 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="centos-配置mailx使用外部smtp发送邮件">Centos 配置mailx使用外部smtp发送邮件</h2>
+				<p><img src="https://i.loli.net/2018/12/02/5c02df25e5ec3.png" alt="1201142054.png" /></p>
+<h3 id="步骤一">步骤一：</h3>
 
-<h3 id="安装mailx">安装mailx</h3>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum <span class="nb">install </span>mailx
+<p>更改hosts：sudo vim /private/etc/hosts</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>127.0.0.1       www.sublimetext.com
+127.0.0.1       license.sublimehq.com
 </code></pre></div></div>
-<h3 id="配置mailx">配置mailx</h3>
+<!--more-->
+<h3 id="步骤二">步骤二：</h3>
+<p>在Sublime里面Help–&gt;License里面输入下面激活码：</p>
 
-<p>推荐163邮箱，当然，QQ邮箱也是可以的，PS：记得要进邮箱打开SMTP</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/mail.rc //如果不存在，则编辑/etc/nail.rc
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----- BEGIN LICENSE -----
+sgbteam
+Single User License
+EA7E-1153259
+8891CBB9 F1513E4F 1A3405C1 A865D53F
+115F202E 7B91AB2D 0D2A40ED 352B269B
+76E84F0B CD69BFC7 59F2DFEF E267328F
+215652A3 E88F9D8F 4C38E3BA 5B2DAAE4
+969624E7 DC9CD4D5 717FB40C 1B9738CF
+20B3C4F1 E917B5B3 87C38D9C ACCE7DD8
+5F7EF854 86B9743C FADC04AA FB0DA5C0
+F913BE58 42FEA319 F954EFDD AE881E0B
+------ END LICENSE ------
 </code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 在文件的末尾加入下面代码，相应帐号密码填写自己的帐号密码
-</span><span class="nb">set</span> <span class="k">from</span><span class="o">=</span><span class="s">"xxx@163.com"</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">=</span><span class="n">smtp</span><span class="mf">.163</span><span class="o">.</span><span class="n">com</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">user</span><span class="o">=</span><span class="n">xxx</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">password</span><span class="o">=</span><span class="err">邮箱密码</span>
-<span class="nb">set</span> <span class="n">smtp</span><span class="o">-</span><span class="n">auth</span><span class="o">=</span><span class="n">login</span>
-</code></pre></div></div>
-
-<h3 id="使用mailx发送邮件">使用mailx发送邮件</h3>
-
-<p>发件人名称可不添加，第二步已配置过
-假设邮件内容存储于mesg文件中，那么可以用如下2个方法：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailx -s "发件人名称 邮件标题" xxx@163.com &lt; mesg
-cat mesg | mailx -s "发件人名称 邮件标题" xxx@163.com
-</code></pre></div></div>
-<p>多个收件人之间用逗号分隔：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat mesg | mailx -s "发件人名称 邮件标题" xxx@163.com,xxx2@163.com,xxx3@163.com
-</code></pre></div></div>
-<p>也可以直接从命令行输入邮件内容：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailx -s "发件人名称 邮件标题" xxx@163.com ##输入完后回车按Ctrl+D提交发送
-echo hello word | mailx -v -s " title" xxx3@163.com
-</code></pre></div></div>
-
-<h4 id="note">NOTE:</h4>
-<p>记得要进邮箱打开SMTP
-配置好后，记住查看是否打开代理（例如翻墙VPN）,代理可能会导致Telnet不通25端口</p>
 
 
                 <hr>
@@ -213,12 +200,12 @@ echo hello word | mailx -v -s " title" xxx3@163.com
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">&larr; Previous Post</a>
+                        <a href="/%E6%95%99%E7%A8%8B/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="Django博客开发：通过django-allauth实现第三方账号登录教程">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="Gitment评论功能接入Jekyll & Hexo教程">Next Post &rarr;</a>
+                        <a href="/%E6%BA%90%E7%A0%81/github/2018/12/01/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F(Intelligent-Facial-Recognition-System)/" data-toggle="tooltip" data-placement="top" title="基于人工智能的树莓派人脸识别系统(Intelligent Facial Recognition System)">Next Post &rarr;</a>
                     </li>
                     
                 </ul>

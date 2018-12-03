@@ -5,9 +5,420 @@
     <description>回到最初的梦想</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Nov 2018 20:54:08 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Nov 2018 20:54:08 -0500</lastBuildDate>
+    <pubDate>Mon, 03 Dec 2018 11:01:51 -0500</pubDate>
+    <lastBuildDate>Mon, 03 Dec 2018 11:01:51 -0500</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>蓝桥杯嵌入式与开发组——历年比赛试题与源码</title>
+        <description>&lt;h1 id=&quot;蓝桥杯历年比赛试题与源码嵌入式与开发组&quot;&gt;蓝桥杯历年比赛试题与源码（嵌入式与开发组）&lt;/h1&gt;
+
+&lt;p&gt;If you appreciate the content 📖, support projects visibility, give⭐&lt;/p&gt;
+
+&lt;h3 id=&quot;第九届决赛模拟题&quot;&gt;第九届决赛模拟题&lt;/h3&gt;
+&lt;h3 id=&quot;第九届省赛模拟题&quot;&gt;第九届省赛模拟题&lt;/h3&gt;
+&lt;h3 id=&quot;第八届决赛-频率控制器的功能设计与实现&quot;&gt;第八届决赛-频率控制器的功能设计与实现&lt;/h3&gt;
+&lt;h3 id=&quot;第八届省赛-模拟升降控制器控制器&quot;&gt;第八届省赛-模拟升降控制器控制器&lt;/h3&gt;
+&lt;h3 id=&quot;第七届决赛-温湿度监控设备&quot;&gt;第七届决赛-温湿度监控设备&lt;/h3&gt;
+&lt;h3 id=&quot;第七届省赛-模拟液位检测告警系统-第二版&quot;&gt;第七届省赛-模拟液位检测告警系统 第二版&lt;/h3&gt;
+&lt;h3 id=&quot;第六届决赛-电压测量与互补-pwm-信号输出&quot;&gt;第六届决赛-电压测量与互补 PWM 信号输出&lt;/h3&gt;
+&lt;h3 id=&quot;第六届省赛-电压测量监控设备&quot;&gt;第六届省赛-电压测量监控设备&lt;/h3&gt;
+&lt;h3 id=&quot;第五届省赛-双通道方波频率检测与倍频输出&quot;&gt;第五届省赛-双通道方波频率检测与倍频输出&lt;/h3&gt;
+&lt;h3 id=&quot;第四届省赛-双路输出控制器&quot;&gt;第四届省赛-双路输出控制器&lt;/h3&gt;
+
+&lt;p&gt;Github: https://github.com/nature1995/lanqiao-competition-code&lt;/p&gt;
+</description>
+        <pubDate>Sat, 01 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/%E6%BA%90%E7%A0%81/github/2018/12/01/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E7%BB%84-%E5%8E%86%E5%B9%B4%E6%AF%94%E8%B5%9B%E8%AF%95%E9%A2%98%E4%B8%8E%E6%BA%90%E7%A0%81/</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%BA%90%E7%A0%81/github/2018/12/01/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E7%BB%84-%E5%8E%86%E5%B9%B4%E6%AF%94%E8%B5%9B%E8%AF%95%E9%A2%98%E4%B8%8E%E6%BA%90%E7%A0%81/</guid>
+        
+        <category>Hardware</category>
+        
+        <category>STM32</category>
+        
+        
+        <category>源码</category>
+        
+        <category>GitHub</category>
+        
+      </item>
+    
+      <item>
+        <title>基于人工智能的树莓派人脸识别系统(Intelligent Facial Recognition System)</title>
+        <description>&lt;p&gt;This is a project of the face recognizer with Movidius on RaspberryPi 3B+ platform. The project also uses Django and Django REST framework which providing the web platform. The project would like to build a safety and intelligent face recognition system in AI era.&lt;/p&gt;
+
+&lt;p&gt;If you appreciate the content 📖, support projects visibility, give⭐&lt;/p&gt;
+
+&lt;p&gt;GitHub: https://github.com/nature1995/Face_Recognition_System&lt;/p&gt;
+&lt;h1 id=&quot;compatibility&quot;&gt;Compatibility&lt;/h1&gt;
+&lt;p&gt;The code is tested using Tensorflow r1.7 and Movidius NCSDK2 under Debin 2018-06-27（Kernel version:4.14） with django 2.1.1 and Python 3.5.&lt;/p&gt;
+
+&lt;h1 id=&quot;real-product-images&quot;&gt;Real Product Images&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/nature1995/Face_Recognition_System/raw/master/image/2.jpg&quot; alt=&quot;image&quot; /&gt;
+ &lt;img src=&quot;https://github.com/nature1995/Face_Recognition_System/raw/master/image/1.jpg&quot; alt=&quot;image&quot; /&gt;
+ &lt;img src=&quot;https://github.com/nature1995/Face_Recognition_System/raw/master/image/3.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Logitech HD Webcam C270&lt;/li&gt;
+  &lt;li&gt;Micro SD Card 32G&lt;/li&gt;
+  &lt;li&gt;Raspberry Pi 3 B+&lt;/li&gt;
+  &lt;li&gt;Intel Movidius Neural Compute Stick&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The code requires &lt;a href=&quot;https://www.python.org/download/releases/3.5/&quot;&gt;Python 3.5&lt;/a&gt;, &lt;a href=&quot;https://www.tensorflow.org/install/&quot;&gt;Tensorflow 1.7&lt;/a&gt;, as well as the following python libraries:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Pillow&lt;/li&gt;
+  &lt;li&gt;django&lt;/li&gt;
+  &lt;li&gt;django-allauth  0.37.1&lt;/li&gt;
+  &lt;li&gt;django-widget-tweaks  1.4.3&lt;/li&gt;
+  &lt;li&gt;pip  18.0&lt;/li&gt;
+  &lt;li&gt;qrcode  6.0&lt;/li&gt;
+  &lt;li&gt;setuptools  40.4.3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Those modules can be installed using: &lt;code class=&quot;highlighter-rouge&quot;&gt;pip3 install xxx&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;neural-compute-application-zoo&quot;&gt;Neural Compute Application Zoo&lt;/h2&gt;
+
+&lt;p&gt;This repository is a place for any interested developers to share their projects (code and Neural Network content) that make use of the Intel® Movidius™ Neural Compute Stick (Intel® Movidius™ NCS) and associated &lt;a href=&quot;http://www.github.com/movidius/ncsdk&quot;&gt;Intel® Movidius™ Neural Compute Software Development Kit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can use the following url(&lt;a href=&quot;https://github.com/movidius/ncappzoo&quot;&gt;NC App Zoo&lt;/a&gt;) or git command to use the ncsdk2 branch of the NC App Zoo repo:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; ncsdk2 https://github.com/movidius/ncappzoo.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;install-django-and-django-rest-framework&quot;&gt;Install Django and Django REST framework&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+pip3 &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; setuptools
+
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; django
+
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; djangorestframework
+
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; django-filter
+
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; markdown
+
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; requests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;install-adafruit_python_dht-library&quot;&gt;Install Adafruit_Python_DHT library&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+
+
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Adafruit_Python_DHT
+
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;python3 setup.py &lt;span class=&quot;nb&quot;&gt;install
+
+cd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;install-adafruit_python_bmp-library&quot;&gt;Install Adafruit_Python_BMP library&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/adafruit/Adafruit_Python_BMP.git
+
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Adafruit_Python_BMP
+
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;python3 setup.py &lt;span class=&quot;nb&quot;&gt;install
+
+cd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;install-psutil-process-and-system-utilities&quot;&gt;Install psutil (process and system utilities)&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;psutil
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&quot;rpi-mjpg-streamer&quot;&gt;rpi-mjpg-streamer&lt;/h1&gt;
+
+&lt;p&gt;Instructions and helper scripts for running mjpg-streamer on Raspberry Pi.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-setup-mjpg-streamer&quot;&gt;A. Setup mjpg-streamer&lt;/h2&gt;
+
+&lt;h3 id=&quot;enable-raspberry-pi-camera-module-from-raspi-config&quot;&gt;Enable Raspberry Pi Camera module from raspi-config&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo raspi-config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;install-necessary-packages-for-mjpg-streamer&quot;&gt;Install necessary packages for mjpg-streamer&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install build-essential libjpeg8-dev imagemagick libv4l-dev git cmake uvcdynctrl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;build-mjpg-streamer&quot;&gt;Build mjpg-streamer&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
+$ git clone https://github.com/jacksonliam/mjpg-streamer
+$ cd mjpg-streamer/mjpg-streamer-experimental
+$ cmake -DCMAKE_INSTALL_PREFIX:PATH=.. .
+$ make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;setup-video4linux-for-raspberry-pi-camera-module&quot;&gt;Setup video4linux for Raspberry Pi Camera module&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo modprobe bcm2835-v4l2
+$ sudo vi /etc/modules
+
+# add following line:
+bcm2835-v4l2
+
+$ sudo vi /boot/config.txt
+
+# add following line if you want to disable RPi camera's LED:
+disable_camera_led=1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;add-yourself-to-the-video-group&quot;&gt;Add yourself to the video group&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo usermod -a -G video $USER
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;b-run-mjpg-streamer&quot;&gt;B. Run mjpg-streamer&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-clone-this-repository&quot;&gt;1. Clone this repository&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/meinside/rpi-mjpg-streamer.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-a-run-mjpg-streamer-from-the-shell-directly&quot;&gt;2-a. Run mjpg-streamer from the shell directly&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# copy &amp;amp; edit run-mjpg-streamer.sh to your environment or needs
+$ cp rpi-mjpg-streamer/run-mjpg-streamer.sh.sample somewhere/run-mjpg-streamer.sh
+$ vi somewhere/run-mjpg-streamer.sh
+
+# then run
+$ somewhere/run-mjpg-streamer.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-b-or-run-mjpg-streamer-as-a-service&quot;&gt;2-b. Or run mjpg-streamer as a service&lt;/h3&gt;
+
+&lt;h4 id=&quot;systemd&quot;&gt;systemd&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# copy &amp;amp; edit systemd/mjpg-streamer.service file,
+$ sudo cp rpi-mjpg-streamer/systemd/mjpg-streamer.service.sample /lib/systemd/system/mjpg-streamer.service
+$ sudo vi /lib/systemd/system/mjpg-streamer.service
+
+# then register as a service
+$ sudo systemctl enable mjpg-streamer.service
+
+# or remove it
+$ sudo systemctl disable mjpg-streamer.service
+
+# and start/stop it
+$ sudo systemctl start mjpg-streamer.service
+$ sudo systemctl stop mjpg-streamer.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;c-connect&quot;&gt;C. Connect&lt;/h2&gt;
+
+&lt;p&gt;Connect through the web browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/nature1995/Face_Recognition_System/raw/master/image/IFRS01.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Most modern browsers(including mobile browsers like Safari and Chrome) will show the live stream immediately.&lt;/p&gt;
+
+&lt;h1 id=&quot;notice&quot;&gt;Notice&lt;/h1&gt;
+
+&lt;h2 id=&quot;virtualenv&quot;&gt;Virtualenv&lt;/h2&gt;
+
+&lt;p&gt;pip3 install virtualenv&lt;/p&gt;
+
+&lt;p&gt;Run Virtualenv&lt;/p&gt;
+
+&lt;p&gt;source venv/bin/activate&lt;/p&gt;
+
+&lt;h2 id=&quot;sqlite3-数据库文件dbsqlite3-权限-666&quot;&gt;sqlite3 数据库文件db.sqlite3 权限 666&lt;/h2&gt;
+
+&lt;p&gt;chmod 666 db.sqlite3&lt;/p&gt;
+
+&lt;h2 id=&quot;django-所在文件夹-权限-775&quot;&gt;django 所在文件夹 权限 775&lt;/h2&gt;
+
+&lt;p&gt;chmod 777 xxx&lt;/p&gt;
+
+&lt;h1 id=&quot;citation&quot;&gt;Citation&lt;/h1&gt;
+
+&lt;p&gt;Just can be used for non-business projects.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 01 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/%E6%BA%90%E7%A0%81/github/2018/12/01/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F(Intelligent-Facial-Recognition-System)/</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%BA%90%E7%A0%81/github/2018/12/01/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F(Intelligent-Facial-Recognition-System)/</guid>
+        
+        <category>Hardware</category>
+        
+        <category>Raspberry Pi</category>
+        
+        
+        <category>源码</category>
+        
+        <category>GitHub</category>
+        
+      </item>
+    
+      <item>
+        <title>Sublime-text3-3176版本激活</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02df25e5ec3.png&quot; alt=&quot;1201142054.png&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;步骤一&quot;&gt;步骤一：&lt;/h3&gt;
+
+&lt;p&gt;更改hosts：sudo vim /private/etc/hosts&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;127.0.0.1       www.sublimetext.com
+127.0.0.1       license.sublimehq.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!--more--&gt;
+&lt;h3 id=&quot;步骤二&quot;&gt;步骤二：&lt;/h3&gt;
+&lt;p&gt;在Sublime里面Help–&amp;gt;License里面输入下面激活码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;----- BEGIN LICENSE -----
+sgbteam
+Single User License
+EA7E-1153259
+8891CBB9 F1513E4F 1A3405C1 A865D53F
+115F202E 7B91AB2D 0D2A40ED 352B269B
+76E84F0B CD69BFC7 59F2DFEF E267328F
+215652A3 E88F9D8F 4C38E3BA 5B2DAAE4
+969624E7 DC9CD4D5 717FB40C 1B9738CF
+20B3C4F1 E917B5B3 87C38D9C ACCE7DD8
+5F7EF854 86B9743C FADC04AA FB0DA5C0
+F913BE58 42FEA319 F954EFDD AE881E0B
+------ END LICENSE ------
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Sat, 01 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/%E6%95%99%E7%A8%8B/2018/12/01/Sublime-text3-3176%E7%89%88%E6%9C%AC%E6%BF%80%E6%B4%BB/</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%95%99%E7%A8%8B/2018/12/01/Sublime-text3-3176%E7%89%88%E6%9C%AC%E6%BF%80%E6%B4%BB/</guid>
+        
+        <category>Software</category>
+        
+        
+        <category>教程</category>
+        
+      </item>
+    
+      <item>
+        <title>Django博客开发：通过django-allauth实现第三方账号登录教程</title>
+        <description>&lt;p&gt;因为需要加入博客的用户登录、注册系统，为了让网站支持第三方登录，所以只用使用&lt;strong&gt;django-allauth&lt;/strong&gt;，根据其官方文档这里：&lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=https://django-allauth.readthedocs.io/en/latest/index.html&quot;&gt;https://django-allauth.readthedocs.io/en/latest/index.html&lt;/a&gt;&lt;/strong&gt;），同时支持本地和第三方账号（Github，百度、微博、微信等等。。），集成了邮箱验证、密码修改、本地账号关联（多个）第三方账号等各种功能，真是厉害了。&lt;/p&gt;
+
+&lt;h2 id=&quot;开发环境python-36django-213&quot;&gt;开发环境：python 3.6、django 2.1.3&lt;/h2&gt;
+
+&lt;h2 id=&quot;准备工作&quot;&gt;准备工作：&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;django-allauth
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!--more--&gt;
+&lt;p&gt;&lt;strong&gt;project/settings.py设置&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INSTALLED_APPS = [# 必须安装的app
+       'django.contrib.auth', 
+       'django.contrib.sites', 'allauth',
+       'allauth.account',   
+       'allauth.socialaccount',
+      # 下面是第三方账号相关的，比如我选了weibo和github 
+      'allauth.socialaccount.providers.weibo', 
+      'allauth.socialaccount.providers.github',
+]
+ # django-allauth相关设置
+AUTHENTICATION_BACKENDS = (
+      # django admin所使用的用户登录与django-allauth无关 
+      'django.contrib.auth.backends.ModelBackend',
+      # `allauth` specific authentication methods, such as login by e-mail 
+      'allauth.account.auth_backends.AuthenticationBackend',
+)
+# 前面我们app里添加了django.contrib.sites,需要设置
+SITE_IDSITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCOUNT_AUTHENTICATION_METHOD = 'username_email'&lt;/code&gt;的作用是当用户登录时，既可以使用用户名也可以使用email， 其他可选的值是 &lt;strong&gt;“username”&lt;/strong&gt;、&lt;strong&gt;“email”&lt;/strong&gt; ，&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCOUNT_EMAIL_REQUIRED = True&lt;/code&gt;要求用户注册时必须填写email，默认False，email是选填的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;project/urls.py 里include allauth的urls&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;urlpatterns = [ url(r'^accounts/', include('allauth.urls')),]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;设置好后，我们就可以用’accounts/login’ 访问登录页面， ‘accounts/logout’ 注销， 其他的可以去 &lt;strong&gt;allauth/account/urls.py&lt;/strong&gt;查看。&lt;/p&gt;
+
+&lt;p&gt;以上基本设置后，需要同步数据库 &lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py migrate runserver&lt;/code&gt;, 访问登录页面，allauth提供的模板非常简陋， 是这样的&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e791028bc.png&quot; alt=&quot;201144936.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们可以使用自己制作的模板，在&lt;strong&gt;project/templates/account&lt;/strong&gt;下创建login.html即可override allauth自带的模板，allauth自带的模板放在&lt;strong&gt;allauth/templates/account&lt;/strong&gt;下， 我们只需要在项目templates/account下创建相同名字的html即可覆盖。&lt;/p&gt;
+
+&lt;h2 id=&quot;测试&quot;&gt;测试&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;下面我们去注册页面test一下，先注册一个本地账号&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;填写完注册信息后，却出现这样一个错误&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e7b02ee3c.png&quot; alt=&quot;107.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;出现此错误的原因，官方文档也有说明，这是因为注册账号后，系统会自动发一封邮件来激活账号，但是我们还有发送邮件相关的设置。&lt;/p&gt;
+
+&lt;p&gt;django默认使用SMTP发送邮件，在project/settings.py如下设置：&lt;/p&gt;
+&lt;div class=&quot;language-django highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# SMTP服务器，我使用的是sendclound的服务
+EMAIL_HOST = 'smtp.sendcloud.net'
+EMAIL_HOST_USER = '用户名'
+EMAIL_HOST_PASSWORD = '对应的API key或者密码
+'EMAIL_PORT = 25
+# 是否使用了SSL 或者TLS
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
+# 默认发件人，不设置的话django默认使用的webmaster@localhost
+DEFAULT_FROM_EMAIL = 'Aaron-Zhao &lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;noreply@aaron-zhao.com&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;完成以上设置后，注册账号是我们就可以收到邮件了，关于邮件的其他详细设置，请参照&lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=https://docs.djangoproject.com/en/1.10/topics/email/&quot;&gt;django的官方文档&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;allauth默认的设置，当用户登录时会重定向到  /accounts/profile，这个页面allauth没有做，因为报错page not found，这个页面需要我们自己完成（请戳：&lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=http://www.aaron-zhao.com/post/5/&quot;&gt;django博客开发：添加用户资料页面和头像上传功能&lt;/a&gt;&lt;/strong&gt;）。与此相关的参数是&lt;strong&gt;LOGIN_REDIRECT_URL&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在project/settings.py设置 **LOGIN_REDIRECT_URL = ‘/’ **，这样用户登录后的页面就会跳转到首页，而不是用户profile页面。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;下面我们去测试一下第三方账号登录，这里以github为例&lt;/strong&gt;，&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=https://github.com/settings/applications/new&quot;&gt;Github OAuth注册页面：https://github.com/settings/applications/new&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;要注意将回调地址&lt;strong&gt;callback URL&lt;/strong&gt;设置为 &lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=http://127.0.0.1:8000/accounts/github/login/callback/&quot;&gt;http://127.0.0.1:8000/accounts/github/login/callback/&lt;/a&gt;，&lt;/strong&gt;完成注册后 我们会获得一个Cliend ID 和 Client Secret，后面我们会用到&lt;/p&gt;
+
+&lt;p&gt;先进入admin后台，会发现增加了social accounts和站点&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e7c801608.png&quot; alt=&quot;11145251.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;点开站点管理，将example.com改为我们博客的域名，在开发环境下，我们用127.0.0.1:8000&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e7dc1823d.png&quot; alt=&quot;201145301.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;点击SOCIAL ACCOUNTS下的Social application，增加一个application，如下图所示&lt;/p&gt;
+
+&lt;p&gt;provider选Github，这里的provider就是我们在INSTALLED_APP里增加的socialaccount.provider，client id 和secret key 我们在github注册应用里获得了，将sites加入到右边 选中的sites&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e7ee96095.png&quot; alt=&quot;145409.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;完成以上设置后，注销，然后回到登录页面，选中github登录，授权应用即可，成功登录后，邮箱里也会收到一份激活邮件，这是因为django-allauth会自动为我们添加一个本地账号，根据你的social account用户名和email。&lt;/p&gt;
+
+&lt;h2 id=&quot;其他相关设置&quot;&gt;其他相关设置&lt;/h2&gt;
+
+&lt;p&gt;project/settings.py&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCOUNT_EMAIL_VERIFICATION = 'optional' / 'mandatory' / 'none'&lt;/code&gt; 默认值是’optional’，当其等于’mandatory’时，在email未验证之前，本地注册的用户无法登陆。’optional’ 和 ‘none’ 则不要求必须验证邮箱，两者区别是’optional’ 依然会发送验证邮件，而’none’ 则不会&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SOCIALACCOUNT_EMAIL_VERIFICATION = 'optional' / 'mandatory' / 'none'&lt;/code&gt;与ACCOUNT_EMAIL_VERIFICATION 同理，作用于第三方账号的注册，默认值等于前者，&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LOGIN_URL = '/accounts/login'&lt;/code&gt; 当用户验证邮件里的验证链接后，如果当前没有登录的用户，则会指向LOGIN_URL&lt;/p&gt;
+</description>
+        <pubDate>Sat, 01 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/%E6%95%99%E7%A8%8B/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%95%99%E7%A8%8B/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/</guid>
+        
+        <category>Django</category>
+        
+        
+        <category>教程</category>
+        
+      </item>
     
       <item>
         <title>VNC和远程桌面的区别</title>
