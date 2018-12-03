@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然ranxiaolang">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>基于人工智能的树莓派人脸识别系统(Intelligent Facial Recognition System) - 自然 | ranxiaolang</title>
+    <title>Django博客开发：通过django-allauth实现第三方账号登录教程 - 自然 | ranxiaolang</title>
 
-    <link rel="canonical" href="http://localhost:4000/%E6%BA%90%E7%A0%81/github/2018/12/01/%E5%9F%BA%E4%BA%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F(Intelligent-Facial-Recognition-System)/">
+    <link rel="canonical" href="http://localhost:4000/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,12 +139,10 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Hardware" title="Hardware">Hardware</a>
-                        
-                        <a class="tag" href="/tags/#Raspberry Pi" title="Raspberry Pi">Raspberry Pi</a>
+                        <a class="tag" href="/tags/#Django" title="Django">Django</a>
                         
                     </div>
-                    <h1>基于人工智能的树莓派人脸识别系统(Intelligent Facial Recognition System)</h1>
+                    <h1>Django博客开发：通过django-allauth实现第三方账号登录教程</h1>
                     
                     
                     <h2 class="subheading"></h2>
@@ -167,203 +165,116 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<p>This is a project of the face recognizer with Movidius on RaspberryPi 3B+ platform. The project also uses Django and Django REST framework which providing the web platform. The project would like to build a safety and intelligent face recognition system in AI era.</p>
+				<p>因为需要加入博客的用户登录、注册系统，为了让网站支持第三方登录，所以只用使用<strong>django-allauth</strong>，根据其官方文档这里：<strong><a href="https://link.jianshu.com?t=https://django-allauth.readthedocs.io/en/latest/index.html">https://django-allauth.readthedocs.io/en/latest/index.html</a></strong>），同时支持本地和第三方账号（Github，百度、微博、微信等等。。），集成了邮箱验证、密码修改、本地账号关联（多个）第三方账号等各种功能，真是厉害了。</p>
 
-<p>If you appreciate the content 📖, support projects visibility, give⭐</p>
+<h2 id="开发环境python-36django-213">开发环境：python 3.6、django 2.1.3</h2>
 
-<p>GitHub: https://github.com/nature1995/Face_Recognition_System</p>
+<h2 id="准备工作">准备工作：</h2>
 
-<h1 id="compatibility">Compatibility</h1>
-<p>The code is tested using Tensorflow r1.7 and Movidius NCSDK2 under Debin 2018-06-27（Kernel version:4.14） with django 2.1.1 and Python 3.5.</p>
+<p><strong>安装</strong></p>
 
-<h1 id="real-product-images">Real Product Images</h1>
-<p><img src="https://github.com/nature1995/Face_Recognition_System/raw/master/image/2.jpg" alt="image" />
- <img src="https://github.com/nature1995/Face_Recognition_System/raw/master/image/1.jpg" alt="image" />
- <img src="https://github.com/nature1995/Face_Recognition_System/raw/master/image/3.jpg" alt="image" />
-<!--more--></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>django-allauth
+</code></pre></div></div>
+<!--more-->
+<p><strong>project/settings.py设置</strong></p>
 
-<h1 id="requirements">Requirements</h1>
-
-<ul>
-  <li>Logitech HD Webcam C270</li>
-  <li>Micro SD Card 32G</li>
-  <li>Raspberry Pi 3 B+</li>
-  <li>Intel Movidius Neural Compute Stick</li>
-</ul>
-
-<p>The code requires <a href="https://www.python.org/download/releases/3.5/">Python 3.5</a>, <a href="https://www.tensorflow.org/install/">Tensorflow 1.7</a>, as well as the following python libraries:</p>
-
-<ul>
-  <li>Pillow</li>
-  <li>django</li>
-  <li>django-allauth  0.37.1</li>
-  <li>django-widget-tweaks  1.4.3</li>
-  <li>pip  18.0</li>
-  <li>qrcode  6.0</li>
-  <li>setuptools  40.4.3</li>
-</ul>
-
-<p>Those modules can be installed using: <code class="highlighter-rouge">pip3 install xxx</code>.</p>
-
-<h2 id="neural-compute-application-zoo">Neural Compute Application Zoo</h2>
-
-<p>This repository is a place for any interested developers to share their projects (code and Neural Network content) that make use of the Intel® Movidius™ Neural Compute Stick (Intel® Movidius™ NCS) and associated <a href="http://www.github.com/movidius/ncsdk">Intel® Movidius™ Neural Compute Software Development Kit</a>.</p>
-
-<p>You can use the following url(<a href="https://github.com/movidius/ncappzoo">NC App Zoo</a>) or git command to use the ncsdk2 branch of the NC App Zoo repo:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> ncsdk2 https://github.com/movidius/ncappzoo.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSTALLED_APPS = [# 必须安装的app
+       'django.contrib.auth', 
+       'django.contrib.sites', 'allauth',
+       'allauth.account',   
+       'allauth.socialaccount',
+      # 下面是第三方账号相关的，比如我选了weibo和github 
+      'allauth.socialaccount.providers.weibo', 
+      'allauth.socialaccount.providers.github',
+]
+ # django-allauth相关设置
+AUTHENTICATION_BACKENDS = (
+      # django admin所使用的用户登录与django-allauth无关 
+      'django.contrib.auth.backends.ModelBackend',
+      # `allauth` specific authentication methods, such as login by e-mail 
+      'allauth.account.auth_backends.AuthenticationBackend',
+)
+# 前面我们app里添加了django.contrib.sites,需要设置
+SITE_IDSITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
 </code></pre></div></div>
 
-<h2 id="install-django-and-django-rest-framework">Install Django and Django REST framework</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-pip3 <span class="nt">-V</span>
+<p><code class="highlighter-rouge">ACCOUNT_AUTHENTICATION_METHOD = 'username_email'</code>的作用是当用户登录时，既可以使用用户名也可以使用email， 其他可选的值是 <strong>“username”</strong>、<strong>“email”</strong> ，<code class="highlighter-rouge">ACCOUNT_EMAIL_REQUIRED = True</code>要求用户注册时必须填写email，默认False，email是选填的。</p>
 
-<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> setuptools
+<p><strong>project/urls.py 里include allauth的urls</strong></p>
 
-<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> django
-
-<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> djangorestframework
-
-<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> django-filter
-
-<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> markdown
-
-<span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-U</span> requests
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>urlpatterns = [ url(r'^accounts/', include('allauth.urls')),]
 </code></pre></div></div>
 
-<h2 id="install-adafruit_python_dht-library">Install Adafruit_Python_DHT library</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+<p>设置好后，我们就可以用’accounts/login’ 访问登录页面， ‘accounts/logout’ 注销， 其他的可以去 <strong>allauth/account/urls.py</strong>查看。</p>
 
+<p>以上基本设置后，需要同步数据库 <code class="highlighter-rouge">python manage.py migrate runserver</code>, 访问登录页面，allauth提供的模板非常简陋， 是这样的</p>
 
-<span class="nb">cd </span>Adafruit_Python_DHT
+<p><img src="https://i.loli.net/2018/12/02/5c02e791028bc.png" alt="201144936.png" /></p>
 
-<span class="nb">sudo </span>python3 setup.py <span class="nb">install
+<p>我们可以使用自己制作的模板，在<strong>project/templates/account</strong>下创建login.html即可override allauth自带的模板，allauth自带的模板放在<strong>allauth/templates/account</strong>下， 我们只需要在项目templates/account下创建相同名字的html即可覆盖。</p>
 
-cd</span>
-</code></pre></div></div>
-<h2 id="install-adafruit_python_bmp-library">Install Adafruit_Python_BMP library</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/adafruit/Adafruit_Python_BMP.git
+<h2 id="测试">测试</h2>
 
-<span class="nb">cd </span>Adafruit_Python_BMP
+<p><strong>下面我们去注册页面test一下，先注册一个本地账号</strong></p>
 
-<span class="nb">sudo </span>python3 setup.py <span class="nb">install
+<p>填写完注册信息后，却出现这样一个错误</p>
 
-cd</span>
-</code></pre></div></div>
-<h2 id="install-psutil-process-and-system-utilities">Install psutil (process and system utilities)</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pip3 <span class="nb">install </span>psutil
-</code></pre></div></div>
-<h1 id="rpi-mjpg-streamer">rpi-mjpg-streamer</h1>
+<p><img src="https://i.loli.net/2018/12/02/5c02e7b02ee3c.png" alt="107.png" /></p>
 
-<p>Instructions and helper scripts for running mjpg-streamer on Raspberry Pi.</p>
+<p>出现此错误的原因，官方文档也有说明，这是因为注册账号后，系统会自动发一封邮件来激活账号，但是我们还有发送邮件相关的设置。</p>
 
-<h2 id="a-setup-mjpg-streamer">A. Setup mjpg-streamer</h2>
-
-<h3 id="enable-raspberry-pi-camera-module-from-raspi-config">Enable Raspberry Pi Camera module from raspi-config</h3>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo raspi-config
+<p>django默认使用SMTP发送邮件，在project/settings.py如下设置：</p>
+<div class="language-django highlighter-rouge"><div class="highlight"><pre class="highlight"><code># SMTP服务器，我使用的是sendclound的服务
+EMAIL_HOST = 'smtp.sendcloud.net'
+EMAIL_HOST_USER = '用户名'
+EMAIL_HOST_PASSWORD = '对应的API key或者密码
+'EMAIL_PORT = 25
+# 是否使用了SSL 或者TLS
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
+# 默认发件人，不设置的话django默认使用的webmaster@localhost
+DEFAULT_FROM_EMAIL = 'Aaron-Zhao <span class="ni">&amp;lt;</span>noreply@aaron-zhao.com<span class="ni">&amp;gt;</span>
 </code></pre></div></div>
 
-<h3 id="install-necessary-packages-for-mjpg-streamer">Install necessary packages for mjpg-streamer</h3>
+<p>完成以上设置后，注册账号是我们就可以收到邮件了，关于邮件的其他详细设置，请参照<strong><a href="https://link.jianshu.com?t=https://docs.djangoproject.com/en/1.10/topics/email/">django的官方文档</a></strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get update
-$ sudo apt-get install build-essential libjpeg8-dev imagemagick libv4l-dev git cmake uvcdynctrl
-</code></pre></div></div>
+<p>allauth默认的设置，当用户登录时会重定向到  /accounts/profile，这个页面allauth没有做，因为报错page not found，这个页面需要我们自己完成（请戳：<strong><a href="https://link.jianshu.com?t=http://www.aaron-zhao.com/post/5/">django博客开发：添加用户资料页面和头像上传功能</a></strong>）。与此相关的参数是<strong>LOGIN_REDIRECT_URL</strong></p>
 
-<h3 id="build-mjpg-streamer">Build mjpg-streamer</h3>
+<p>在project/settings.py设置 **LOGIN_REDIRECT_URL = ‘/’ **，这样用户登录后的页面就会跳转到首页，而不是用户profile页面。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
-$ git clone https://github.com/jacksonliam/mjpg-streamer
-$ cd mjpg-streamer/mjpg-streamer-experimental
-$ cmake -DCMAKE_INSTALL_PREFIX:PATH=.. .
-$ make install
-</code></pre></div></div>
+<p><strong>下面我们去测试一下第三方账号登录，这里以github为例</strong>，</p>
 
-<h3 id="setup-video4linux-for-raspberry-pi-camera-module">Setup video4linux for Raspberry Pi Camera module</h3>
+<p><strong><a href="https://link.jianshu.com?t=https://github.com/settings/applications/new">Github OAuth注册页面：https://github.com/settings/applications/new</a></strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo modprobe bcm2835-v4l2
-$ sudo vi /etc/modules
+<p>要注意将回调地址<strong>callback URL</strong>设置为 <strong><a href="https://link.jianshu.com?t=http://127.0.0.1:8000/accounts/github/login/callback/">http://127.0.0.1:8000/accounts/github/login/callback/</a>，</strong>完成注册后 我们会获得一个Cliend ID 和 Client Secret，后面我们会用到</p>
 
-# add following line:
-bcm2835-v4l2
+<p>先进入admin后台，会发现增加了social accounts和站点</p>
 
-$ sudo vi /boot/config.txt
+<p><img src="https://i.loli.net/2018/12/02/5c02e7c801608.png" alt="11145251.png" /></p>
 
-# add following line if you want to disable RPi camera's LED:
-disable_camera_led=1
-</code></pre></div></div>
+<p>点开站点管理，将example.com改为我们博客的域名，在开发环境下，我们用127.0.0.1:8000</p>
 
-<h3 id="add-yourself-to-the-video-group">Add yourself to the video group</h3>
+<p><img src="https://i.loli.net/2018/12/02/5c02e7dc1823d.png" alt="201145301.png" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo usermod -a -G video $USER
-</code></pre></div></div>
+<p>点击SOCIAL ACCOUNTS下的Social application，增加一个application，如下图所示</p>
 
-<h2 id="b-run-mjpg-streamer">B. Run mjpg-streamer</h2>
+<p>provider选Github，这里的provider就是我们在INSTALLED_APP里增加的socialaccount.provider，client id 和secret key 我们在github注册应用里获得了，将sites加入到右边 选中的sites</p>
 
-<h3 id="1-clone-this-repository">1. Clone this repository</h3>
+<p><img src="https://i.loli.net/2018/12/02/5c02e7ee96095.png" alt="145409.png" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/meinside/rpi-mjpg-streamer.git
-</code></pre></div></div>
+<p>完成以上设置后，注销，然后回到登录页面，选中github登录，授权应用即可，成功登录后，邮箱里也会收到一份激活邮件，这是因为django-allauth会自动为我们添加一个本地账号，根据你的social account用户名和email。</p>
 
-<h3 id="2-a-run-mjpg-streamer-from-the-shell-directly">2-a. Run mjpg-streamer from the shell directly</h3>
+<h2 id="其他相关设置">其他相关设置</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># copy &amp; edit run-mjpg-streamer.sh to your environment or needs
-$ cp rpi-mjpg-streamer/run-mjpg-streamer.sh.sample somewhere/run-mjpg-streamer.sh
-$ vi somewhere/run-mjpg-streamer.sh
+<p>project/settings.py</p>
 
-# then run
-$ somewhere/run-mjpg-streamer.sh
-</code></pre></div></div>
+<p><code class="highlighter-rouge">ACCOUNT_EMAIL_VERIFICATION = 'optional' / 'mandatory' / 'none'</code> 默认值是’optional’，当其等于’mandatory’时，在email未验证之前，本地注册的用户无法登陆。’optional’ 和 ‘none’ 则不要求必须验证邮箱，两者区别是’optional’ 依然会发送验证邮件，而’none’ 则不会</p>
 
-<h3 id="2-b-or-run-mjpg-streamer-as-a-service">2-b. Or run mjpg-streamer as a service</h3>
+<p><code class="highlighter-rouge">SOCIALACCOUNT_EMAIL_VERIFICATION = 'optional' / 'mandatory' / 'none'</code>与ACCOUNT_EMAIL_VERIFICATION 同理，作用于第三方账号的注册，默认值等于前者，</p>
 
-<h4 id="systemd">systemd</h4>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># copy &amp; edit systemd/mjpg-streamer.service file,
-$ sudo cp rpi-mjpg-streamer/systemd/mjpg-streamer.service.sample /lib/systemd/system/mjpg-streamer.service
-$ sudo vi /lib/systemd/system/mjpg-streamer.service
-
-# then register as a service
-$ sudo systemctl enable mjpg-streamer.service
-
-# or remove it
-$ sudo systemctl disable mjpg-streamer.service
-
-# and start/stop it
-$ sudo systemctl start mjpg-streamer.service
-$ sudo systemctl stop mjpg-streamer.service
-</code></pre></div></div>
-
-<h2 id="c-connect">C. Connect</h2>
-
-<p>Connect through the web browser:</p>
-
-<p><img src="https://github.com/nature1995/Face_Recognition_System/raw/master/image/IFRS01.png" alt="image" /></p>
-
-<p>Most modern browsers(including mobile browsers like Safari and Chrome) will show the live stream immediately.</p>
-
-<h1 id="notice">Notice</h1>
-
-<h2 id="virtualenv">Virtualenv</h2>
-
-<p>pip3 install virtualenv</p>
-
-<p>Run Virtualenv</p>
-
-<p>source venv/bin/activate</p>
-
-<h2 id="sqlite3-数据库文件dbsqlite3-权限-666">sqlite3 数据库文件db.sqlite3 权限 666</h2>
-
-<p>chmod 666 db.sqlite3</p>
-
-<h2 id="django-所在文件夹-权限-775">django 所在文件夹 权限 775</h2>
-
-<p>chmod 777 xxx</p>
-
-<h1 id="citation">Citation</h1>
-
-<p>Just can be used for non-business projects.</p>
+<p><code class="highlighter-rouge">LOGIN_URL = '/accounts/login'</code> 当用户验证邮件里的验证链接后，如果当前没有登录的用户，则会指向LOGIN_URL</p>
 
 
                 <hr>
@@ -374,12 +285,12 @@ $ sudo systemctl stop mjpg-streamer.service
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/%E6%95%99%E7%A8%8B/2018/12/01/Sublime-text3-3176%E7%89%88%E6%9C%AC%E6%BF%80%E6%B4%BB/" data-toggle="tooltip" data-placement="top" title="Sublime-text3-3176版本激活">&larr; Previous Post</a>
+                        <a href="/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/" data-toggle="tooltip" data-placement="top" title="VNC和远程桌面的区别">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/%E6%BA%90%E7%A0%81/github/2018/12/01/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E7%BB%84-%E5%8E%86%E5%B9%B4%E6%AF%94%E8%B5%9B%E8%AF%95%E9%A2%98%E4%B8%8E%E6%BA%90%E7%A0%81/" data-toggle="tooltip" data-placement="top" title="蓝桥杯嵌入式与开发组——历年比赛试题与源码">Next Post &rarr;</a>
+                        <a href="/2018/12/01/Sublime-text3-3176%E7%89%88%E6%9C%AC%E6%BF%80%E6%B4%BB/" data-toggle="tooltip" data-placement="top" title="Sublime-text3-3176版本激活">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
