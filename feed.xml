@@ -5,9 +5,106 @@
     <description>回到最初的梦想</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 03 Dec 2018 12:09:55 -0500</pubDate>
-    <lastBuildDate>Mon, 03 Dec 2018 12:09:55 -0500</lastBuildDate>
+    <pubDate>Wed, 05 Dec 2018 11:30:40 -0500</pubDate>
+    <lastBuildDate>Wed, 05 Dec 2018 11:30:40 -0500</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Centos更新源yum问题解决方法</title>
+        <description>&lt;p&gt;好久不更新自己的服务器或者误删除了更新源，偶然返现自己的Centos的系统yum源出现问题了，如何才能修复？&lt;/p&gt;
+
+&lt;h3 id=&quot;方式一使用国内的阿里云镜像&quot;&gt;方式一：使用国内的阿里云镜像&lt;/h3&gt;
+
+&lt;p&gt;（1）把/etc/yum.repos.d/下面所有的源给删除掉了&lt;/p&gt;
+
+&lt;p&gt;（2）选择自己系统合适的镜像下载&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# CentOS 5
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
+# CentOS 6
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+# CentOS 7
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;注意如果没有安装wget，可以从下面的网址中先手动下载，然后上传到linux上安装：http://www.rpmfind.net/linux/rpm2html/search.php?query=wget&lt;/p&gt;
+
+&lt;p&gt;（3）执行命令，重新生成cache&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum clean all
+yum makecache
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;方式二使用官网的镜像&quot;&gt;方式二：使用官网的镜像&lt;/h3&gt;
+
+&lt;p&gt;（1）把/etc/yum.repos.d/下面所有的源给删除掉了&lt;/p&gt;
+
+&lt;p&gt;（2）执行下面的命令，重新生成镜像&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//执行这个命令之后
+rpm -Uvh --force http://mirror.centos.org/centos-7/7/os/x86_64/Packages/centos-release-7-4.1708.el7.centos.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;（3）查看/etc/yum.repos.d/下面目录，就会发现镜像已经安装完毕：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-rw-r--r--. 1 root root 1664 8月  30 23:53 CentOS-Base.repo
+-rw-r--r--. 1 root root 1309 8月  30 23:53 CentOS-CR.repo
+-rw-r--r--. 1 root root  649 8月  30 23:53 CentOS-Debuginfo.repo
+-rw-r--r--. 1 root root  314 8月  30 23:53 CentOS-fasttrack.repo
+-rw-r--r--. 1 root root  630 8月  30 23:53 CentOS-Media.repo
+-rw-r--r--. 1 root root 1331 8月  30 23:53 CentOS-Sources.repo
+-rw-r--r--. 1 root root 3830 8月  30 23:53 CentOS-Vault.repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;（4）生成缓存&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum clean all
+yum makecache
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;必要时可以执行yum update更新当前系统的安装包为新的&lt;/p&gt;
+
+&lt;p&gt;手动下载命令，例子:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#安装vim组件
+yum install -y vim
+ 
+#卸载vim组件
+yum remove vim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;推荐使用方式一。&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 05 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/12/05/Centos%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85yum%E7%9A%84base-repo%E6%BA%90/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/05/Centos%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85yum%E7%9A%84base-repo%E6%BA%90/</guid>
+        
+        <category>服务器</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>MAC在同一程序切换窗口</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;在MAC下切换窗口是command+tab键，这个是多程序之间切换。那么在同一程序下，比如多个独立浏览器之间或者word之间切换呢？&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;同一程序切换窗口&quot;&gt;同一程序切换窗口：&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;command + ~&lt;/code&gt;组合按键，在同时按住数字区域第一个键。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;多个浏览器窗口之间切换&lt;/li&gt;
+  &lt;li&gt;多个Word之间切换&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;不同程序之间切换&quot;&gt;不同程序之间切换：&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;command + tab&lt;/code&gt;键进行切换&lt;/p&gt;
+</description>
+        <pubDate>Tue, 04 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/12/04/MAC%E5%9C%A8%E5%90%8C%E4%B8%80%E7%A8%8B%E5%BA%8F%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/04/MAC%E5%9C%A8%E5%90%8C%E4%B8%80%E7%A8%8B%E5%BA%8F%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3/</guid>
+        
+        <category>教程</category>
+        
+        <category>Mac</category>
+        
+        
+      </item>
     
       <item>
         <title>蓝桥杯嵌入式与开发组——历年比赛试题与源码</title>
@@ -632,54 +729,6 @@ echo hello word | mailx -v -s &quot; title&quot; xxx3@163.com
         <guid isPermaLink="true">http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
         
         <category>Centos</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Jupyter Lab Config on Raspberry Pi</title>
-        <description>&lt;h2 id=&quot;to-activate-this-environment-use&quot;&gt;To activate this environment, use&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $ conda activate base
- $ conda activate tensorflow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;树莓派-source--activate-tensorflow&quot;&gt;树莓派： source  activate tensorflow&lt;/h4&gt;
-
-&lt;h2 id=&quot;to-deactivate-an-active-environment-use&quot;&gt;To deactivate an active environment, use&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $ conda deactivate
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;树莓派-source--deactivate-tensorflow&quot;&gt;树莓派： source  deactivate tensorflow&lt;/h4&gt;
-
-&lt;p&gt;conda install jupyter notebook
-conda install jupyterlab&lt;/p&gt;
-
-&lt;p&gt;jupyter notebook  –ip=0.0.0.0 –no-browser –allow-root
-jupyter lab  –ip=0.0.0.0 –no-browser –allow-root&lt;/p&gt;
-
-&lt;p&gt;不输出日志 jupyter lab  –ip=0.0.0.0 –no-browser –allow-root &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;
-jupyter lab &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 20 Nov 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/11/20/jupyter-lab-config-raspi/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/20/jupyter-lab-config-raspi/</guid>
-        
-        <category>Jupyter</category>
-        
-        <category>Raspberry Pi</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Hello World</title>
-        <description>&lt;h2 id=&quot;hello-world&quot;&gt;Hello World&lt;/h2&gt;
-</description>
-        <pubDate>Mon, 19 Nov 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/11/19/new-hello-world/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/19/new-hello-world/</guid>
         
         
       </item>

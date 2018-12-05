@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然Ziran">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>VNC和远程桌面的区别 - 自然 | Ziran</title>
+    <title>Centos更新源yum问题解决方法 - 自然 | Ziran</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link rel="canonical" href="http://localhost:4000/2018/12/05/Centos%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85yum%E7%9A%84base-repo%E6%BA%90/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,15 +139,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Virtualization" title="Virtualization">Virtualization</a>
+                        <a class="tag" href="/tags/#服务器" title="服务器">服务器</a>
                         
                     </div>
-                    <h1>VNC和远程桌面的区别</h1>
+                    <h1>Centos更新源yum问题解决方法</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 29, 2018</span>
+                    <span class="meta">Posted by Ziran on December 5, 2018</span>
                 </div>
             </div>
         </div>
@@ -165,19 +165,62 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h3 id="vnc和远程桌面的区别">VNC和远程桌面的区别</h3>
-<p>我们可以通过VNC(Virtual Network Computing)和远程桌面来连接到远程的计算机上，但是两者是有一定的区别的。</p>
+				<p>好久不更新自己的服务器或者误删除了更新源，偶然返现自己的Centos的系统yum源出现问题了，如何才能修复？</p>
 
-<h3 id="vnc">VNC</h3>
-<p>VNC使用的是RFB协议来做屏幕分享和远程操作的软件，由著名的AT&amp;T欧洲研究实验室开发。使用时需要客户端软件和服务器软件配合使用。</p>
+<h3 id="方式一使用国内的阿里云镜像">方式一：使用国内的阿里云镜像</h3>
 
-<h3 id="远程桌面">远程桌面</h3>
-<p>远程桌面使用RDP(Remote Desktop Protocol)远程桌面协议，大部分Windows都默认支持此协议，可以远程接入操作桌面。</p>
+<p>（1）把/etc/yum.repos.d/下面所有的源给删除掉了</p>
 
-<h3 id="rfb和rdp区别">RFB和RDP区别</h3>
-<p>RFB是在服务器端将窗口在显存中画好之后将图像传给客户端，客户端只充当一个图像解码显示的角色； RDP则将画图的工作交给了客户端，服务器需要了解客户端显示能力的具体情况，以便作出相应调整。</p>
+<p>（2）选择自己系统合适的镜像下载</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># CentOS 5
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
+# CentOS 6
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+# CentOS 7
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+</code></pre></div></div>
+<p>注意如果没有安装wget，可以从下面的网址中先手动下载，然后上传到linux上安装：http://www.rpmfind.net/linux/rpm2html/search.php?query=wget</p>
 
-<p>RFB主要传图像，RDP主要传指令。就一般应用而言，RFB数据量太大，RDP对客户端要求较高，因此RFB适用于瘦客户端，RDP适用于低速网络。</p>
+<p>（3）执行命令，重新生成cache</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum clean all
+yum makecache
+</code></pre></div></div>
+
+<h3 id="方式二使用官网的镜像">方式二：使用官网的镜像</h3>
+
+<p>（1）把/etc/yum.repos.d/下面所有的源给删除掉了</p>
+
+<p>（2）执行下面的命令，重新生成镜像</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//执行这个命令之后
+rpm -Uvh --force http://mirror.centos.org/centos-7/7/os/x86_64/Packages/centos-release-7-4.1708.el7.centos.x86_64.rpm
+</code></pre></div></div>
+
+<p>（3）查看/etc/yum.repos.d/下面目录，就会发现镜像已经安装完毕：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-rw-r--r--. 1 root root 1664 8月  30 23:53 CentOS-Base.repo
+-rw-r--r--. 1 root root 1309 8月  30 23:53 CentOS-CR.repo
+-rw-r--r--. 1 root root  649 8月  30 23:53 CentOS-Debuginfo.repo
+-rw-r--r--. 1 root root  314 8月  30 23:53 CentOS-fasttrack.repo
+-rw-r--r--. 1 root root  630 8月  30 23:53 CentOS-Media.repo
+-rw-r--r--. 1 root root 1331 8月  30 23:53 CentOS-Sources.repo
+-rw-r--r--. 1 root root 3830 8月  30 23:53 CentOS-Vault.repo
+</code></pre></div></div>
+
+<p>（4）生成缓存</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum clean all
+yum makecache
+</code></pre></div></div>
+<p>必要时可以执行yum update更新当前系统的安装包为新的</p>
+
+<p>手动下载命令，例子:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#安装vim组件
+yum install -y vim
+ 
+#卸载vim组件
+yum remove vim
+</code></pre></div></div>
+
+<p>推荐使用方式一。</p>
+
 
 
                 <hr>
@@ -188,13 +231,9 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/" data-toggle="tooltip" data-placement="top" title="Keras：安装graphviz和pydot后出现RuntimeError：无法导入pydot">&larr; Previous Post</a>
+                        <a href="/2018/12/04/MAC%E5%9C%A8%E5%90%8C%E4%B8%80%E7%A8%8B%E5%BA%8F%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3/" data-toggle="tooltip" data-placement="top" title="MAC在同一程序切换窗口">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="Django博客开发：通过django-allauth实现第三方账号登录教程">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
 

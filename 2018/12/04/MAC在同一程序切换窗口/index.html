@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然Ziran">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>VNC和远程桌面的区别 - 自然 | Ziran</title>
+    <title>MAC在同一程序切换窗口 - 自然 | Ziran</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link rel="canonical" href="http://localhost:4000/2018/12/04/MAC%E5%9C%A8%E5%90%8C%E4%B8%80%E7%A8%8B%E5%BA%8F%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,15 +139,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Virtualization" title="Virtualization">Virtualization</a>
+                        <a class="tag" href="/tags/#教程" title="教程">教程</a>
+                        
+                        <a class="tag" href="/tags/#Mac" title="Mac">Mac</a>
                         
                     </div>
-                    <h1>VNC和远程桌面的区别</h1>
+                    <h1>MAC在同一程序切换窗口</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 29, 2018</span>
+                    <span class="meta">Posted by Ziran on December 4, 2018</span>
                 </div>
             </div>
         </div>
@@ -165,19 +167,21 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h3 id="vnc和远程桌面的区别">VNC和远程桌面的区别</h3>
-<p>我们可以通过VNC(Virtual Network Computing)和远程桌面来连接到远程的计算机上，但是两者是有一定的区别的。</p>
+				<blockquote>
+  <p>在MAC下切换窗口是command+tab键，这个是多程序之间切换。那么在同一程序下，比如多个独立浏览器之间或者word之间切换呢？</p>
+</blockquote>
 
-<h3 id="vnc">VNC</h3>
-<p>VNC使用的是RFB协议来做屏幕分享和远程操作的软件，由著名的AT&amp;T欧洲研究实验室开发。使用时需要客户端软件和服务器软件配合使用。</p>
+<h3 id="同一程序切换窗口">同一程序切换窗口：</h3>
 
-<h3 id="远程桌面">远程桌面</h3>
-<p>远程桌面使用RDP(Remote Desktop Protocol)远程桌面协议，大部分Windows都默认支持此协议，可以远程接入操作桌面。</p>
+<p><code class="highlighter-rouge">command + ~</code>组合按键，在同时按住数字区域第一个键。</p>
 
-<h3 id="rfb和rdp区别">RFB和RDP区别</h3>
-<p>RFB是在服务器端将窗口在显存中画好之后将图像传给客户端，客户端只充当一个图像解码显示的角色； RDP则将画图的工作交给了客户端，服务器需要了解客户端显示能力的具体情况，以便作出相应调整。</p>
+<ul>
+  <li>多个浏览器窗口之间切换</li>
+  <li>多个Word之间切换</li>
+</ul>
 
-<p>RFB主要传图像，RDP主要传指令。就一般应用而言，RFB数据量太大，RDP对客户端要求较高，因此RFB适用于瘦客户端，RDP适用于低速网络。</p>
+<h3 id="不同程序之间切换">不同程序之间切换：</h3>
+<p><code class="highlighter-rouge">command + tab</code>键进行切换</p>
 
 
                 <hr>
@@ -188,12 +192,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/" data-toggle="tooltip" data-placement="top" title="Keras：安装graphviz和pydot后出现RuntimeError：无法导入pydot">&larr; Previous Post</a>
+                        <a href="/2018/12/01/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E7%BB%84-%E5%8E%86%E5%B9%B4%E6%AF%94%E8%B5%9B%E8%AF%95%E9%A2%98%E4%B8%8E%E6%BA%90%E7%A0%81/" data-toggle="tooltip" data-placement="top" title="蓝桥杯嵌入式与开发组——历年比赛试题与源码">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="Django博客开发：通过django-allauth实现第三方账号登录教程">Next Post &rarr;</a>
+                        <a href="/2018/12/05/Centos%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85yum%E7%9A%84base-repo%E6%BA%90/" data-toggle="tooltip" data-placement="top" title="Centos更新源yum问题解决方法">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
