@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然Ziran">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Hello World - 自然 | Ziran</title>
+    <title>5G核心网架构基础概念 - 自然 | Ziran</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/19/new-hello-world/">
+    <link rel="canonical" href="http://localhost:4000/2018/12/11/5G%E6%A0%B8%E5%BF%83%E7%BD%91%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,13 +139,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/#5G" title="5G">5G</a>
+                        
+                        <a class="tag" href="/tags/#5G核心网" title="5G核心网">5G核心网</a>
+                        
                     </div>
-                    <h1>Hello World</h1>
+                    <h1>5G核心网架构基础概念</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 19, 2018</span>
+                    <span class="meta">Posted by Ziran on December 11, 2018</span>
                 </div>
             </div>
         </div>
@@ -163,7 +167,108 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hello-world">Hello World</h2>
+				<blockquote>
+  <p>5G无线接入网络架构，主要包括 5G 接入网和 5G 核心网，其中 NG-RAN 代表 5G 接入网，5GC 代表 5G 核心网。</p>
+</blockquote>
+
+<p><img src="https://i.loli.net/2018/12/12/5c100a118e98c.jpg" alt="1.jpg" /></p>
+
+<p><strong>5G核心网主要包括哪些呢?先说一下关键的 AMF，SMF，UPF。</strong></p>
+
+<p><img src="https://i.loli.net/2018/12/12/5c100a11f1b20.jpg" alt="2.jpg" /></p>
+
+<p>AMF：全称 Access and Mobility Management Function，接入和移动管理功能，终端接入权限和切换等由它来负责。
+SMF：全称 Session Management Function，会话管理功能，提供服务连续性，服务的不间断用户体验，包括IP地址和/或锚点变化的情况。
+UPF：全称 User Plane Function，用户面管理功能，与UPF关联的PDU会话可以由(R)AN节点通过(R)AN和UPF之间的N3接口服务的区域，而无需在其间添加新的UPF或移除/重新 - 分配UPF。
+<!--more-->
+<strong>我们看一下5G的系统构架图：</strong></p>
+
+<p>5G的系统构架图</p>
+
+<p><img src="https://i.loli.net/2018/12/12/5c100a11bd0db.jpg" alt="3.jpg" /></p>
+
+<p>AMF，SMF，UPF 处于主体的作用。</p>
+
+<p><img src="https://i.loli.net/2018/12/12/5c100a1188066.jpg" alt="4.jpg" /></p>
+
+<p>参考点表示中的非漫游 5G 系统体系结构</p>
+
+<h3 id="接入和移动管理功能amf承载以下主要功能">接入和移动管理功能(AMF)承载以下主要功能：</h3>
+
+<p>接入和移动管理功能(AMF)包括以下功能。 在AMF的单个实例中可以支持部分或全部AMF功能：</p>
+
+<p>终止RAN CP接口(N2)。
+终止NAS(N1)，NAS加密和完整性保护。
+注册管理。
+连接管理。
+可达性管理。
+流动性管理。
+合法拦截(适用于AMF事件和LI系统的接口)。
+为UE和SMF之间的SM消息提供传输。
+用于路由SM消息的透明代理。
+接入身份验证。
+接入授权。
+在UE和SMSF之间提供SMS消息的传输。
+安全锚功能(SEAF)。
+监管服务的定位服务管理。
+为UE和LMF之间以及RAN和LMF之间的位置服务消息提供传输。
+用于与EPS互通的EPS 承载 ID分配。
+UE移动事件通知。
+无论网络功能的数量如何，UE和CN之间的每个接入网络只有一个NAS接口实例，终止于至少实现NAS安全性和移动性管理的网络功能之一。</p>
+
+<p>除了上述AMF的功能之外，AMF还可以包括以下功能以支持非3GPP 接入网络：</p>
+
+<p>支持N2接口与N3IWF。 在该接口上，可以不应用通过3GPP 接入定义的一些信息(例如，3GPP 小区标识)和过程(例如，与切换相关)，并且可以应用不适用于3GPP接入的非3GPP 接入特定信息。
+通过N3IWF上的UE支持NAS信令。 由3GPP 接入上的NAS信令支持的一些过程可能不适用于不可信的非3GPP(例如寻呼)接入。
+支持通过N3IWF连接的UE的认证。
+管理通过非3GPP 接入连接或通过3GPP和非3GPP同时连接的UE的移动性，认证和单独的安全上下文状态。
+支持协调的RM管理上下文，该上下文对3GPP和非3GPP访问有效。
+支持针对UE的专用CM管理上下文，用于通过非3GPP 接入进行连接。
+注意：并非所有功能都需要在网络片的实例中得到支持。</p>
+
+<h3 id="会话管理功能upf承载以下主要功能">会话管理功能(UPF)承载以下主要功能</h3>
+
+<p>用户平面功能(UPF)包括以下功能。 在UPF的单个实例中可以支持部分或全部UPF功能：</p>
+
+<p>用于RAT内/ RAT间移动性的锚点(适用时)。
+外部PDU与数据网络互连的会话点。
+分组路由和转发(例如，支持上行链路分类器以将业务流路由到数据网络的实例，支持分支点以支持多宿主PDU会话)。
+数据包检查(例如，基于服务数据流模板的应用程序检测以及从SMF接收的可选PFD)。
+用户平面部分策略规则实施，例如门控，重定向，流量转向)。
+合法拦截(UP收集)。
+流量使用报告。
+用户平面的QoS处理，例如UL / DL速率实施，DL中的反射QoS标记。
+上行链路流量验证(SDF到QoS流量映射)。
+上行链路和下行链路中的传输级分组标记。
+下行数据包缓冲和下行数据通知触发。
+将一个或多个“结束标记”发送和转发到源NG-RAN节点。
+ARP代理和/或以太网PDU的IPv6 Neighbor Solicitation Proxying。 UPF通过提供与请求中发送的IP地址相对应的MAC地址来响应ARP和/或IPv6邻居请求请求。</p>
+
+<h3 id="会话管理功能smf承载以下主要功能">会话管理功能(SMF)承载以下主要功能</h3>
+
+<p>会话管理功能(SMF)包括以下功能。 在SMF的单个实例中可以支持部分或全部SMF功能：</p>
+
+<p>会话管理，例如会话建立，修改和释放，包括UPF和AN节点之间的隧道维护。
+UE IP地址分配和管理(包括可选的授权)。
+DHCPv4(服务器和客户端)和DHCPv6(服务器和客户端)功能。
+ARP代理和/或以太网PDU的IPv6 Neighbor Solicitation Proxying。 SMF通过提供与请求中发送的IP地址相对应的MAC地址来响应ARP和/或IPv6邻居请求请求。
+选择和控制UP功能，包括控制UPF代理ARP或IPv6邻居发现，或将所有ARP / IPv6邻居请求流量转发到SMF，用于以太网PDU会话。
+配置UPF的流量控制，将流量路由到正确的目的地。
+终止接口到策略控制功能。
+合法拦截(用于SM事件和LI系统的接口)。
+收费数据收集和支持计费接口。
+控制和协调UPF的收费数据收集。
+终止SM消息的SM部分。
+下行数据通知。
+AN特定SM信息的发起者，通过AMF通过N2发送到AN。
+确定会话的SSC模式。</p>
+
+<p><strong>漫游功能：</strong></p>
+
+<p>处理本地实施以应用QoS SLA(VPLMN)。
+计费数据收集和计费接口(VPLMN)。
+合法拦截(在SM事件的VPLMN和LI系统的接口)。
+支持与外部DN的交互，以便通过外部DN传输PDU会话授权/认证的信令。</p>
 
 
                 <hr>
@@ -173,9 +278,13 @@
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2018/12/11/5G%E6%A0%B8%E5%BF%83%E7%BD%91%E5%B0%86%E9%87%87%E7%94%A8SBA%E6%9E%B6%E6%9E%84/" data-toggle="tooltip" data-placement="top" title="5G核心网将采用SBA架构">&larr; Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">Next Post &rarr;</a>
+                        <a href="/2018/12/11/Mac%E6%9C%80%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7-iStat-Menus-6%E6%9C%80%E6%96%B0%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%8F%8A%E6%B3%A8%E5%86%8C%E7%A0%81/" data-toggle="tooltip" data-placement="top" title="Mac最好的系统监控工具-iStat Menus 6最新下载地址及注册码">Next Post &rarr;</a>
                     </li>
                     
                 </ul>

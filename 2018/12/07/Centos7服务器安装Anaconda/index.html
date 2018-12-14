@@ -10,9 +10,9 @@
     <meta name="keyword"  content="自然Ziran">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Hello World - 自然 | Ziran</title>
+    <title>Centos7服务器安装Anaconda - 自然 | Ziran</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/11/19/new-hello-world/">
+    <link rel="canonical" href="http://localhost:4000/2018/12/07/Centos7%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85Anaconda/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -139,13 +139,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/#服务器" title="服务器">服务器</a>
+                        
+                        <a class="tag" href="/tags/#Centos" title="Centos">Centos</a>
+                        
                     </div>
-                    <h1>Hello World</h1>
+                    <h1>Centos7服务器安装Anaconda</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Ziran on November 19, 2018</span>
+                    <span class="meta">Posted by Ziran on December 7, 2018</span>
                 </div>
             </div>
         </div>
@@ -163,7 +167,161 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hello-world">Hello World</h2>
+				<h1 id="anaconda3下载">Anaconda3下载</h1>
+<p>从Anaconda官网下载linux版本：https://www.anaconda.com/download/#linux</p>
+
+<h1 id="anaconda3安装">Anaconda3安装</h1>
+<p>将下载好的文件Anaconda3-5.0.1-Linux-x86_64.sh执行如下命令：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># bash Anaconda3-5.0.1-Linux-x86_64.sh
+</code></pre></div></div>
+<p>安装过程中修改Anaconda3的安装路径为/opt/modules/anaconda3:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Do you accept the license terms? [yes|no]
+Please answer 'yes' or 'no':'
+&gt;&gt;&gt; yes  
+
+Anaconda3 will now be installed into this location:
+/root/anaconda3
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+[/root/anaconda3] &gt;&gt;&gt; /opt/modules/anaconda3
+PREFIX=/opt/modules/anaconda3
+</code></pre></div></div>
+<p>等待安装完成提示信息，询问是否要将Anaconda3添加到PATH环境变量中，直接回车(选择no):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>installation finished.
+Do you wish the installer to prepend the Anaconda3 install location
+to PATH in your /root/.bashrc ? [yes|no]
+[no] &gt;&gt;&gt; 
+
+You may wish to edit your .bashrc to prepend the Anaconda3 install location to PATH:
+
+export PATH=/opt/modules/anaconda3/bin:$PATH
+
+Thank you for installing Anaconda3!
+</code></pre></div></div>
+<p>手动将export PATH=/opt/modules/anaconda3/bin:$PATH添加到/etc/profile中, 最后source /etc/profile使环境变量生效:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># source /etc/profile
+</code></pre></div></div>
+
+<h1 id="tensorflow安装">Tensorflow安装</h1>
+<p>建立Tensorflow运行环境
+Tensorflow目前Python3版本最高支持到Python3.5，所以选择Python 3.5, 只需要执行conda create -n tensorflow python=3.5指令:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Python 2.7
+# conda create -n tensorflow python=2.7  
+
+## Python 3.5 
+# conda create -n tensorflow python=3.5 
+
+## Python 3.6 
+# conda create -n tensorflow python=3.6
+</code></pre></div></div>
+<p>在Anaconda3中创建Tensorflow虚拟环境:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fetching package metadata ...........
+Solving package specifications: .
+
+Package plan for installation in environment /opt/modules/anaconda3/envs/tensorflow:
+
+The following NEW packages will be INSTALLED:
+
+    ca-certificates: 2017.08.26-h1d4fec5_0   
+    certifi:         2017.11.5-py35h9749603_0
+    libedit:         3.1-heed3624_0          
+    libffi:          3.2.1-hd88cf55_4        
+    libgcc-ng:       7.2.0-h7cc24e2_2        
+    libstdcxx-ng:    7.2.0-h7a57d05_2        
+    ncurses:         6.0-h9df7e31_2          
+    openssl:         1.0.2m-h26d622b_1       
+    pip:             9.0.1-py35h7e7da9d_4    
+    python:          3.5.4-h417fded_24       
+    readline:        7.0-ha6073c6_4          
+    setuptools:      36.5.0-py35ha8c1747_0   
+    sqlite:          3.20.1-hb898158_2       
+    tk:              8.6.7-hc745277_3        
+    wheel:           0.30.0-py35hd3883cf_1   
+    xz:              5.2.3-h55aa19d_2        
+    zlib:            1.2.11-ha838bed_2       
+
+Proceed ([y]/n)? 
+
+
+libffi-3.2.1-h 100% |##################################################################| Time: 0:00:00 137.60 kB/s
+ncurses-6.0-h9 100% |##################################################################| Time: 0:00:01 622.10 kB/s
+openssl-1.0.2m 100% |##################################################################| Time: 0:00:03   1.06 MB/s
+tk-8.6.7-hc745 100% |##################################################################| Time: 0:00:02   1.13 MB/s
+xz-5.2.3-h55aa 100% |##################################################################| Time: 0:00:00   1.28 MB/s
+zlib-1.2.11-ha 100% |##################################################################| Time: 0:00:00   1.59 MB/s
+readline-7.0-h 100% |##################################################################| Time: 0:00:00   1.27 MB/s
+sqlite-3.20.1- 100% |##################################################################| Time: 0:00:01   1.41 MB/s
+python-3.5.4-h 100% |##################################################################| Time: 0:00:07   3.87 MB/s
+certifi-2017.1 100% |##################################################################| Time: 0:00:00   6.01 MB/s
+setuptools-36. 100% |##################################################################| Time: 0:00:00   6.55 MB/s
+wheel-0.30.0-p 100% |##################################################################| Time: 0:00:00   6.82 MB/s
+pip-9.0.1-py35 100% |##################################################################| Time: 0:00:00   6.78 MB/s
+#
+# To activate this environment, use:
+# &gt; source activate tensorflow
+#
+# To deactivate an active environment, use:
+# &gt; source deactivate
+#
+</code></pre></div></div>
+
+<p>为了简便也可以直接指定版本python=3.5, 且克隆anaconda所有的Python包:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create -n tensorflow python=3.5 anaconda
+</code></pre></div></div>
+
+<h1 id="conda环境管理">conda环境管理</h1>
+<h2 id="列出所有的环境">列出所有的环境</h2>
+<h2 id="conda-info-envs">conda info –envs</h2>
+<h2 id="创建一个指定python版本且包含anaconda所有python包的新环境">创建一个指定Python版本且包含anaconda所有Python包的新环境</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># conda create -n py36 python=3.6 anaconda
+</code></pre></div></div>
+<h2 id="克隆一个环境">克隆一个环境</h2>
+<p>创建一个和root环境一样的副本:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create -n py36 --clone root
+</code></pre></div></div>
+<h2 id="删除一个环境">删除一个环境</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># conda remove -n py36 --all
+</code></pre></div></div>
+<p>在conda环境下安装tensorflow（pip安装方式）
+激活conda环境(tensorflow)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># source activate tensorflow
+</code></pre></div></div>
+<h2 id="根据tensorflow的版本设置环境变量以cpu版本为例">根据tensorflow的版本设置环境变量（以CPU版本为例）</h2>
+<p>Tensorflow的源码地址: https://github.com/tensorflow/tensorflow，如下三种环境Python2.7, Python3.4, Python3.5，选择一种(Python3.5)运行:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Linux 64-bit, CPU only, Python 2.7 
+(tensorflow)$ export TF_BINARY_URL=https://ci.tensorflow.org/view/tf-nightly/job/tf-nightly-linux/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tf_nightly-1.head-cp27-none-linux_x86_64.whl 
+## Linux 64-bit, CPU only, Python 3.4 
+(tensorflow)$ export TF_BINARY_URL=https://ci.tensorflow.org/view/tf-nightly/job/tf-nightly-linux/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tf_nightly-1.head-cp34-cp34m-linux_x86_64.whl
+## Linux 64-bit, CPU only, Python 3.5 
+(tensorflow)$ export TF_BINARY_URL=https://ci.tensorflow.org/view/tf-nightly/job/tf-nightly-linux/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3.5,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tf_nightly-1.head-cp35-cp35m-linux_x86_64.whl
+</code></pre></div></div>
+<h2 id="使用pip命令安装tensorflow">使用pip命令安装tensorflow</h2>
+<p>选择一种安装环境(Python 3):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Python 2 
+(tensorflow)# pip install --ignore-installed --upgrade $TF_BINARY_URL 
+
+## Python 3 
+(tensorflow)# pip install --ignore-installed --upgrade $TF_BINARY_URL
+</code></pre></div></div>
+
+<h2 id="使用conda命令安装tensorflow">使用conda命令安装tensorflow</h2>
+<p>Using conda参照如下网址: 
+A community maintained conda package is available from conda-forge. 
+https://github.com/conda-forge/tensorflow-feedstock</p>
+
+<p>Only the CPU version of TensorFlow is available at the moment and can be installed in the conda environment for Python 2 or Python 3.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ source activate tensorflow 
+(tensorflow)# 
+</code></pre></div></div>
+<p>Linux/Mac OS X, Python 2.7/3.4/3.5, CPU only:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(tensorflow)# conda install -c conda-forge tensorflow
+</code></pre></div></div>
+<p>参考资料
+【1】https://blog.csdn.net/liuguangrong/article/details/78737419</p>
 
 
                 <hr>
@@ -173,9 +331,13 @@
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2018/12/05/Centos%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85yum%E7%9A%84base-repo%E6%BA%90/" data-toggle="tooltip" data-placement="top" title="Centos更新源yum问题解决方法">&larr; Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2018/11/20/jupyter-lab-config-raspi/" data-toggle="tooltip" data-placement="top" title="Jupyter Lab Config on Raspberry Pi">Next Post &rarr;</a>
+                        <a href="/2018/12/11/5G%E6%A0%B8%E5%BF%83%E7%BD%91%E5%B0%86%E9%87%87%E7%94%A8SBA%E6%9E%B6%E6%9E%84/" data-toggle="tooltip" data-placement="top" title="5G核心网将采用SBA架构">Next Post &rarr;</a>
                     </li>
                     
                 </ul>

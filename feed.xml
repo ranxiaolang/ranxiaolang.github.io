@@ -5,9 +5,539 @@
     <description>回到最初的梦想</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 05 Dec 2018 11:57:17 -0500</pubDate>
-    <lastBuildDate>Wed, 05 Dec 2018 11:57:17 -0500</lastBuildDate>
+    <pubDate>Fri, 14 Dec 2018 15:12:58 -0500</pubDate>
+    <lastBuildDate>Fri, 14 Dec 2018 15:12:58 -0500</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>树莓派Raspberry Pi 3搭建PLEX多媒体服务器</title>
+        <description>&lt;h2 id=&quot;先看效果图&quot;&gt;先看效果图&lt;/h2&gt;
+&lt;p&gt;支持账户远程访问和本地访问，断电重启自动恢复功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/13/5c119b2c3f236.png&quot; alt=&quot;效果图&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;##教程&lt;/p&gt;
+
+&lt;h3 id=&quot;一在树莓派下安装plex媒体服务器&quot;&gt;一、在树莓派下安装PLEX媒体服务器&lt;/h3&gt;
+&lt;p&gt;1.在终端，将你的树莓派更新至最新&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt dist-upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!--more--&gt;
+&lt;p&gt;2.重启树莓派&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;3.添加https存储库的功能，如果你已安装了，系统会报告“现在的版本已经是最新版”&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;apt-transport-https
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4.添加Plex Media Server存储库&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deb https://dev2day.de/pms/ jessie main&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sudo tee&lt;/span&gt; /etc/apt/sources.list.d/pms.list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;5.为存储库添加GPG密钥&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /tmp
+wget https://dev2day.de/pms/dev2day-pms.gpg.key 
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; （#查看是否已经下载好dev2day-pms.gpg.key文件）
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-key add dev2day-pms.gpg.key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;6.回到根目录&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;7.更新源&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;8.安装Plex媒体服务器&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;plexmediaserver-installer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注意：如果无法找到安装包，请重启树莓派，并执行update命令&lt;/p&gt;
+
+&lt;p&gt;9.创建默认配置文件，以便Plex知道要在哪个用户下操作&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano /etc/default/plexmediaserver.prev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;将里面的的&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;PLEX_MEDIA_SERVER_USER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;plex
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;修改为&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;PLEX_MEDIA_SERVER_USER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;pi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;重启PLEX服务,看到如下界面说明已经安装成功&lt;/li&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl restart plexmediaserver
+systemctl status plexmediaserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;11.重启树莓派(可选)&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;二安装usb外挂硬盘实现电影资源存放&quot;&gt;二、安装USB外挂硬盘，实现电影资源存放&lt;/h3&gt;
+
+&lt;p&gt;1.检查插入的USB硬盘已安装到哪里&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo cat&lt;/span&gt; /proc/mounts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2.安装NTFS驱动器&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ntfs-3g
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;3.查询已插入硬盘的UUID&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; /dev/disk/by-uuid
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4.现在我们创建一个新的目录来挂载USB&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo mkdir&lt;/span&gt; /media/usb1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;5.接下来我们查询硬盘的UID和GID&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; pi
+&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; pi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;6.我们需要对fstab文件进行编辑。这是启动时调用的文件，用于设置驱动器&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;7.将以下代码的UUID、UID和GID更改为你查询到的填入&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;UUID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;你的UUID /media/usb1 auto nofail,uid&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;输入你的UID,gid&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;输入你的UID,noatime 0 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;8.卸载之前挂载好的USB硬盘&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;umount /dev/sda1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;9.重新挂载USB硬盘&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mount &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;10.重启树莓派，完成全部安装&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;reb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;参考：https://www.vediotalk.com/?p=215&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Wed, 12 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/12/12/%E6%A0%91%E8%8E%93%E6%B4%BERaspberry-Pi-3%E6%90%AD%E5%BB%BAPLEX%E5%A4%9A%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/12/%E6%A0%91%E8%8E%93%E6%B4%BERaspberry-Pi-3%E6%90%AD%E5%BB%BAPLEX%E5%A4%9A%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+        
+        <category>Raspberry Pi</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Mac最好的系统监控工具-iStat Menus 6最新下载地址及注册码</title>
+        <description>&lt;h2 id=&quot;一mac最好的系统状态监控工具--istat-menus-6-简介&quot;&gt;一、Mac最好的系统状态监控工具 : iStat Menus 6 简介&lt;/h2&gt;
+&lt;p&gt;这是Mac平台最好的系统状态监控工具，主要是监控系统运行状态的，功能很强大，装机必备。这款软件让您可以从菜单栏中监控您的系统，包括8个额外的菜单，让您监视您的系统的每个方面。&lt;/p&gt;
+
+&lt;h2 id=&quot;二mac最好的系统状态监控工具--istat-menus-6-截图&quot;&gt;二、Mac最好的系统状态监控工具 : iStat Menus 6 截图&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/11/5c0f428884fb9.png&quot; alt=&quot;Mac mini 1&quot; /&gt;
+&lt;!--more--&gt;
+&lt;img src=&quot;https://i.loli.net/2018/12/11/5c0f42df2da0c.png&quot; alt=&quot;Mac mini 2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/11/5c0f42f1675e4.png&quot; alt=&quot;Mac mini 3&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;三mac最好的系统状态监控工具--istat-menus-6-下载与注册方法&quot;&gt;三、Mac最好的系统状态监控工具 : iStat Menus 6 下载与注册方法&lt;/h2&gt;
+
+&lt;p&gt;使用下面链接下载最新版本&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://bjango.com/mac/istatmenus/&quot;&gt;最新版本&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;安装完成后输入下面邮箱和激活码进行激活&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 注册码: 
+Email: 982092332@qq.com 
+SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ9-TGH3S-8SGA 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 11 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/12/11/Mac%E6%9C%80%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7-iStat-Menus-6%E6%9C%80%E6%96%B0%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%8F%8A%E6%B3%A8%E5%86%8C%E7%A0%81/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/11/Mac%E6%9C%80%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7-iStat-Menus-6%E6%9C%80%E6%96%B0%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%8F%8A%E6%B3%A8%E5%86%8C%E7%A0%81/</guid>
+        
+        <category>Mac</category>
+        
+        <category>教程</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>5G核心网架构基础概念</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;5G无线接入网络架构，主要包括 5G 接入网和 5G 核心网，其中 NG-RAN 代表 5G 接入网，5GC 代表 5G 核心网。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/12/5c100a118e98c.jpg&quot; alt=&quot;1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5G核心网主要包括哪些呢?先说一下关键的 AMF，SMF，UPF。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/12/5c100a11f1b20.jpg&quot; alt=&quot;2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;AMF：全称 Access and Mobility Management Function，接入和移动管理功能，终端接入权限和切换等由它来负责。
+SMF：全称 Session Management Function，会话管理功能，提供服务连续性，服务的不间断用户体验，包括IP地址和/或锚点变化的情况。
+UPF：全称 User Plane Function，用户面管理功能，与UPF关联的PDU会话可以由(R)AN节点通过(R)AN和UPF之间的N3接口服务的区域，而无需在其间添加新的UPF或移除/重新 - 分配UPF。
+&lt;!--more--&gt;
+&lt;strong&gt;我们看一下5G的系统构架图：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;5G的系统构架图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/12/5c100a11bd0db.jpg&quot; alt=&quot;3.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;AMF，SMF，UPF 处于主体的作用。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/12/5c100a1188066.jpg&quot; alt=&quot;4.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;参考点表示中的非漫游 5G 系统体系结构&lt;/p&gt;
+
+&lt;h3 id=&quot;接入和移动管理功能amf承载以下主要功能&quot;&gt;接入和移动管理功能(AMF)承载以下主要功能：&lt;/h3&gt;
+
+&lt;p&gt;接入和移动管理功能(AMF)包括以下功能。 在AMF的单个实例中可以支持部分或全部AMF功能：&lt;/p&gt;
+
+&lt;p&gt;终止RAN CP接口(N2)。
+终止NAS(N1)，NAS加密和完整性保护。
+注册管理。
+连接管理。
+可达性管理。
+流动性管理。
+合法拦截(适用于AMF事件和LI系统的接口)。
+为UE和SMF之间的SM消息提供传输。
+用于路由SM消息的透明代理。
+接入身份验证。
+接入授权。
+在UE和SMSF之间提供SMS消息的传输。
+安全锚功能(SEAF)。
+监管服务的定位服务管理。
+为UE和LMF之间以及RAN和LMF之间的位置服务消息提供传输。
+用于与EPS互通的EPS 承载 ID分配。
+UE移动事件通知。
+无论网络功能的数量如何，UE和CN之间的每个接入网络只有一个NAS接口实例，终止于至少实现NAS安全性和移动性管理的网络功能之一。&lt;/p&gt;
+
+&lt;p&gt;除了上述AMF的功能之外，AMF还可以包括以下功能以支持非3GPP 接入网络：&lt;/p&gt;
+
+&lt;p&gt;支持N2接口与N3IWF。 在该接口上，可以不应用通过3GPP 接入定义的一些信息(例如，3GPP 小区标识)和过程(例如，与切换相关)，并且可以应用不适用于3GPP接入的非3GPP 接入特定信息。
+通过N3IWF上的UE支持NAS信令。 由3GPP 接入上的NAS信令支持的一些过程可能不适用于不可信的非3GPP(例如寻呼)接入。
+支持通过N3IWF连接的UE的认证。
+管理通过非3GPP 接入连接或通过3GPP和非3GPP同时连接的UE的移动性，认证和单独的安全上下文状态。
+支持协调的RM管理上下文，该上下文对3GPP和非3GPP访问有效。
+支持针对UE的专用CM管理上下文，用于通过非3GPP 接入进行连接。
+注意：并非所有功能都需要在网络片的实例中得到支持。&lt;/p&gt;
+
+&lt;h3 id=&quot;会话管理功能upf承载以下主要功能&quot;&gt;会话管理功能(UPF)承载以下主要功能&lt;/h3&gt;
+
+&lt;p&gt;用户平面功能(UPF)包括以下功能。 在UPF的单个实例中可以支持部分或全部UPF功能：&lt;/p&gt;
+
+&lt;p&gt;用于RAT内/ RAT间移动性的锚点(适用时)。
+外部PDU与数据网络互连的会话点。
+分组路由和转发(例如，支持上行链路分类器以将业务流路由到数据网络的实例，支持分支点以支持多宿主PDU会话)。
+数据包检查(例如，基于服务数据流模板的应用程序检测以及从SMF接收的可选PFD)。
+用户平面部分策略规则实施，例如门控，重定向，流量转向)。
+合法拦截(UP收集)。
+流量使用报告。
+用户平面的QoS处理，例如UL / DL速率实施，DL中的反射QoS标记。
+上行链路流量验证(SDF到QoS流量映射)。
+上行链路和下行链路中的传输级分组标记。
+下行数据包缓冲和下行数据通知触发。
+将一个或多个“结束标记”发送和转发到源NG-RAN节点。
+ARP代理和/或以太网PDU的IPv6 Neighbor Solicitation Proxying。 UPF通过提供与请求中发送的IP地址相对应的MAC地址来响应ARP和/或IPv6邻居请求请求。&lt;/p&gt;
+
+&lt;h3 id=&quot;会话管理功能smf承载以下主要功能&quot;&gt;会话管理功能(SMF)承载以下主要功能&lt;/h3&gt;
+
+&lt;p&gt;会话管理功能(SMF)包括以下功能。 在SMF的单个实例中可以支持部分或全部SMF功能：&lt;/p&gt;
+
+&lt;p&gt;会话管理，例如会话建立，修改和释放，包括UPF和AN节点之间的隧道维护。
+UE IP地址分配和管理(包括可选的授权)。
+DHCPv4(服务器和客户端)和DHCPv6(服务器和客户端)功能。
+ARP代理和/或以太网PDU的IPv6 Neighbor Solicitation Proxying。 SMF通过提供与请求中发送的IP地址相对应的MAC地址来响应ARP和/或IPv6邻居请求请求。
+选择和控制UP功能，包括控制UPF代理ARP或IPv6邻居发现，或将所有ARP / IPv6邻居请求流量转发到SMF，用于以太网PDU会话。
+配置UPF的流量控制，将流量路由到正确的目的地。
+终止接口到策略控制功能。
+合法拦截(用于SM事件和LI系统的接口)。
+收费数据收集和支持计费接口。
+控制和协调UPF的收费数据收集。
+终止SM消息的SM部分。
+下行数据通知。
+AN特定SM信息的发起者，通过AMF通过N2发送到AN。
+确定会话的SSC模式。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;漫游功能：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;处理本地实施以应用QoS SLA(VPLMN)。
+计费数据收集和计费接口(VPLMN)。
+合法拦截(在SM事件的VPLMN和LI系统的接口)。
+支持与外部DN的交互，以便通过外部DN传输PDU会话授权/认证的信令。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 11 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/12/11/5G%E6%A0%B8%E5%BF%83%E7%BD%91%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/11/5G%E6%A0%B8%E5%BF%83%E7%BD%91%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid>
+        
+        <category>5G</category>
+        
+        <category>5G核心网</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>5G核心网将采用SBA架构</title>
+        <description>&lt;h3 id=&quot;sba架构service-based-architecture-基于服务的网络架构作为统一基础架构&quot;&gt;SBA架构(Service-based architecture 基于服务的网络架构)作为统一基础架构&lt;/h3&gt;
+
+&lt;p&gt;终于迎来了一个确定的消息，在杭州结束的国际移动通信标准组织3GPP专业会议上，3GPP正式确认5G核心网采用中国移动牵头并联合26家公司提出的SBA架构(Service-based architecture 基于服务的网络架构)作为统一基础架构。&lt;/p&gt;
+
+&lt;p&gt;据了解，该架构由中国移动牵头联合全球14家运营商及华为等12家网络设备商联合提出。&lt;/p&gt;
+
+&lt;p&gt;近半年来，5G标准化项目一直在讨论5G网络是不是该采用SBA新型架构。此次，3GPP将SBA确定为5G网络唯一基础架构，是5G系统架构标准化立项以来的重要进展。
+&lt;!--more--&gt;
+据悉，SBA采用“服务”来设计移动通的网元及主要功能，以“服务调用”取代传统的信令交流。这种设计有助于网络快速升级、提升资源利用率、加速新能力引入、便于网内和网外的能力开放，使得5G系统从架构上全面云化，利用快速扩缩容。&lt;/p&gt;
+
+&lt;p&gt;而其实早在2016年11月在美国里诺举行的3GPP SA2#118次会议，在，3GPP决定正式启动5G系统设计，并确认中国移动牵头5G系统架构标准项目。&lt;/p&gt;
+
+&lt;p&gt;那时在中国IMT-2020推进组、中国移动、AT&amp;amp;T、德电等运营商及华为、诺基亚、中兴、爱立信等厂商的积极推动下,来自全球的通信运营商、设备商已经对5G系统总体架构形成共识，要将“基于服务”的模块化设计将成为5G系统架构的主要特征。改变传统基于“请求—应答”的网络流程，5G系统架构将基于“微服务”的设计理念。&lt;/p&gt;
+
+&lt;p&gt;基于服务的网络架构借鉴IT领域的“微服务”设计理念，将网络功能定义为多个相对独立可被灵活调用的服务模块。基于此，运营商可以按照业务需求进行灵活定制组网，使得5G网络真正面向云化(Cloud Native)设计，具备多方面优点，如便于网络快速升级、提升网络资源利用率、加速网络新能力引入，以及在授权的情况下开放给第三方等。&lt;/p&gt;
+
+&lt;h3 id=&quot;决定5g网络整体形态&quot;&gt;决定5G网络整体形态&lt;/h3&gt;
+
+&lt;p&gt;5G系统架构标准项目的名称为R15“5G System Architecture”，简称5GS，是整个5G设计的第一个技术标准，也是事关5G全系统设计的基础性标准。&lt;/p&gt;
+
+&lt;p&gt;5GS项目唯一报告人、中国移动研究院网络技术研究所孙韬博士也曾向媒体公开表示，5G整体系统的设计包括顶层设计、无线网设计、核心网设计等方面，5G系统架构标准项目主要是进行顶层设计和核心网设计，而架构和核心网的设计对5G网络管理运营至关重要，对运营商及整个产业链来说也有非常重要的意义。同时，项目将对5G系统架构、功能、接口关系、流程、漫游、与现有网络共存关系等进行标准化。也是从系统设计和端到端角度对5G进行定义和规范，基本确定了5G网络的面貌、组网形态。&lt;/p&gt;
+
+&lt;p&gt;据悉， 5GS项目预计会在今年12月前，制定《5G系统总体架构及功能》及《5G系统基本流程》两个基础性标准。&lt;/p&gt;
+
+&lt;p&gt;孙滔表示，这两个规范是5G系统架构（5GS）项目拟输出的正式标准，是定义和形成5G网络系统的基础性标准，决定了5G网络架构的整体形态。这两个标准也为5G相关的技术标准，如网管、协议实现、安全等提供参考和依据。&lt;/p&gt;
+
+&lt;p&gt;《5G系统总体架构及功能》主要定义5G系统总体架构、主要功能、逻辑关系和接口、漫游架构、与现存共存关系等。《5G系统基本流程》将定义端到端的网络流程、涉及终端和网络互通、不同网络功能间的交互等。这两份规范是5G运营商组网、厂家设备研制、互通互联的基本依据，是后续5G技术进一步完善和增强的基础。&lt;/p&gt;
+
+&lt;p&gt;他认为这两份规范是5G运营商组网、厂家设备研制、互通互联的基本依据，是后续5G技术进一步完善和增强的基础。&lt;/p&gt;
+
+&lt;h3 id=&quot;面向服务化形神兼备&quot;&gt;面向服务化——形神兼备&lt;/h3&gt;
+
+&lt;p&gt;在孙滔看来，5G网络的架构是一个具有长远影响力和创新性的新架构，如“面向服务化”，很多控制面相关的业务逻辑将以“服务”来定义，使得网络功能的配置更加灵活、开放；“面向网络切片”，可以同时形成不同特性的相对独立的网络能力；“接入无关性”，5G从设计的一开始就考虑统一的网络架构，同时考虑对5G接入及非蜂窝网接入的支持。&lt;/p&gt;
+
+&lt;p&gt;中国移动研究院网络所所长段晓东也曾在公开演讲中表示，中国移动对5G基本架构已有初步共识，就是要支持多种接入、降低不同接入方式和核心网的耦合、实现按需的组网、借力NFV/SDN技术。&lt;/p&gt;
+
+&lt;p&gt;他表示，5G网络化已经到了关键时期，中国移动代表IMT-2020(5G推进组)提出5G网络架构三大设计原则。&lt;/p&gt;
+
+&lt;p&gt;首先是从刚性到软性，就是从固定网络(网元、固定连接、固定部署)到动态网络(动态部署、配置、灵活连接)，网络资源虚拟化、网络功能的解耦和服务化。&lt;/p&gt;
+
+&lt;p&gt;其次是移动网络IP化、互联网化，就是实现与IT网络互通融合，引入互联网技术，优化网络设计。&lt;/p&gt;
+
+&lt;p&gt;最后是集中化智能和分布化处理，集中化智能-功能集中优化，为垂直行业提供个性化增值服务，并分布化处理-移动网络功能靠近用户，提高网络吞吐量，降低时延。&lt;/p&gt;
+
+&lt;p&gt;以SDN/NFV技术实现网络云化，加上微服务设计，这意味着5G网络真正走向开放化、服务化、软件化方向，有利于实现5G与垂直行业融合发展。某知名行业自媒体评论，5G网络以NFV/SDN这个“形”作为平台基础，加上服务化的“神”实现5G能力，将真正“形神兼备”&lt;/p&gt;
+</description>
+        <pubDate>Tue, 11 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/12/11/5G%E6%A0%B8%E5%BF%83%E7%BD%91%E5%B0%86%E9%87%87%E7%94%A8SBA%E6%9E%B6%E6%9E%84/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/11/5G%E6%A0%B8%E5%BF%83%E7%BD%91%E5%B0%86%E9%87%87%E7%94%A8SBA%E6%9E%B6%E6%9E%84/</guid>
+        
+        <category>5G</category>
+        
+        <category>5G核心网</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Centos7服务器安装Anaconda</title>
+        <description>&lt;h1 id=&quot;anaconda3下载&quot;&gt;Anaconda3下载&lt;/h1&gt;
+&lt;p&gt;从Anaconda官网下载linux版本：https://www.anaconda.com/download/#linux&lt;/p&gt;
+
+&lt;h1 id=&quot;anaconda3安装&quot;&gt;Anaconda3安装&lt;/h1&gt;
+&lt;p&gt;将下载好的文件Anaconda3-5.0.1-Linux-x86_64.sh执行如下命令：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# bash Anaconda3-5.0.1-Linux-x86_64.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;安装过程中修改Anaconda3的安装路径为/opt/modules/anaconda3:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Do you accept the license terms? [yes|no]
+Please answer 'yes' or 'no':'
+&amp;gt;&amp;gt;&amp;gt; yes  
+
+Anaconda3 will now be installed into this location:
+/root/anaconda3
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+[/root/anaconda3] &amp;gt;&amp;gt;&amp;gt; /opt/modules/anaconda3
+PREFIX=/opt/modules/anaconda3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;等待安装完成提示信息，询问是否要将Anaconda3添加到PATH环境变量中，直接回车(选择no):&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;installation finished.
+Do you wish the installer to prepend the Anaconda3 install location
+to PATH in your /root/.bashrc ? [yes|no]
+[no] &amp;gt;&amp;gt;&amp;gt; 
+
+You may wish to edit your .bashrc to prepend the Anaconda3 install location to PATH:
+
+export PATH=/opt/modules/anaconda3/bin:$PATH
+
+Thank you for installing Anaconda3!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;手动将export PATH=/opt/modules/anaconda3/bin:$PATH添加到/etc/profile中, 最后source /etc/profile使环境变量生效:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# source /etc/profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;tensorflow安装&quot;&gt;Tensorflow安装&lt;/h1&gt;
+&lt;p&gt;建立Tensorflow运行环境
+Tensorflow目前Python3版本最高支持到Python3.5，所以选择Python 3.5, 只需要执行conda create -n tensorflow python=3.5指令:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Python 2.7
+# conda create -n tensorflow python=2.7  
+
+## Python 3.5 
+# conda create -n tensorflow python=3.5 
+
+## Python 3.6 
+# conda create -n tensorflow python=3.6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;在Anaconda3中创建Tensorflow虚拟环境:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching package metadata ...........
+Solving package specifications: .
+
+Package plan for installation in environment /opt/modules/anaconda3/envs/tensorflow:
+
+The following NEW packages will be INSTALLED:
+
+    ca-certificates: 2017.08.26-h1d4fec5_0   
+    certifi:         2017.11.5-py35h9749603_0
+    libedit:         3.1-heed3624_0          
+    libffi:          3.2.1-hd88cf55_4        
+    libgcc-ng:       7.2.0-h7cc24e2_2        
+    libstdcxx-ng:    7.2.0-h7a57d05_2        
+    ncurses:         6.0-h9df7e31_2          
+    openssl:         1.0.2m-h26d622b_1       
+    pip:             9.0.1-py35h7e7da9d_4    
+    python:          3.5.4-h417fded_24       
+    readline:        7.0-ha6073c6_4          
+    setuptools:      36.5.0-py35ha8c1747_0   
+    sqlite:          3.20.1-hb898158_2       
+    tk:              8.6.7-hc745277_3        
+    wheel:           0.30.0-py35hd3883cf_1   
+    xz:              5.2.3-h55aa19d_2        
+    zlib:            1.2.11-ha838bed_2       
+
+Proceed ([y]/n)? 
+
+
+libffi-3.2.1-h 100% |##################################################################| Time: 0:00:00 137.60 kB/s
+ncurses-6.0-h9 100% |##################################################################| Time: 0:00:01 622.10 kB/s
+openssl-1.0.2m 100% |##################################################################| Time: 0:00:03   1.06 MB/s
+tk-8.6.7-hc745 100% |##################################################################| Time: 0:00:02   1.13 MB/s
+xz-5.2.3-h55aa 100% |##################################################################| Time: 0:00:00   1.28 MB/s
+zlib-1.2.11-ha 100% |##################################################################| Time: 0:00:00   1.59 MB/s
+readline-7.0-h 100% |##################################################################| Time: 0:00:00   1.27 MB/s
+sqlite-3.20.1- 100% |##################################################################| Time: 0:00:01   1.41 MB/s
+python-3.5.4-h 100% |##################################################################| Time: 0:00:07   3.87 MB/s
+certifi-2017.1 100% |##################################################################| Time: 0:00:00   6.01 MB/s
+setuptools-36. 100% |##################################################################| Time: 0:00:00   6.55 MB/s
+wheel-0.30.0-p 100% |##################################################################| Time: 0:00:00   6.82 MB/s
+pip-9.0.1-py35 100% |##################################################################| Time: 0:00:00   6.78 MB/s
+#
+# To activate this environment, use:
+# &amp;gt; source activate tensorflow
+#
+# To deactivate an active environment, use:
+# &amp;gt; source deactivate
+#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;为了简便也可以直接指定版本python=3.5, 且克隆anaconda所有的Python包:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n tensorflow python=3.5 anaconda
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;conda环境管理&quot;&gt;conda环境管理&lt;/h1&gt;
+&lt;h2 id=&quot;列出所有的环境&quot;&gt;列出所有的环境&lt;/h2&gt;
+&lt;h2 id=&quot;conda-info-envs&quot;&gt;conda info –envs&lt;/h2&gt;
+&lt;h2 id=&quot;创建一个指定python版本且包含anaconda所有python包的新环境&quot;&gt;创建一个指定Python版本且包含anaconda所有Python包的新环境&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# conda create -n py36 python=3.6 anaconda
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;克隆一个环境&quot;&gt;克隆一个环境&lt;/h2&gt;
+&lt;p&gt;创建一个和root环境一样的副本:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n py36 --clone root
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;删除一个环境&quot;&gt;删除一个环境&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# conda remove -n py36 --all
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;在conda环境下安装tensorflow（pip安装方式）
+激活conda环境(tensorflow)&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# source activate tensorflow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;根据tensorflow的版本设置环境变量以cpu版本为例&quot;&gt;根据tensorflow的版本设置环境变量（以CPU版本为例）&lt;/h2&gt;
+&lt;p&gt;Tensorflow的源码地址: https://github.com/tensorflow/tensorflow，如下三种环境Python2.7, Python3.4, Python3.5，选择一种(Python3.5)运行:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Linux 64-bit, CPU only, Python 2.7 
+(tensorflow)$ export TF_BINARY_URL=https://ci.tensorflow.org/view/tf-nightly/job/tf-nightly-linux/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tf_nightly-1.head-cp27-none-linux_x86_64.whl 
+## Linux 64-bit, CPU only, Python 3.4 
+(tensorflow)$ export TF_BINARY_URL=https://ci.tensorflow.org/view/tf-nightly/job/tf-nightly-linux/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tf_nightly-1.head-cp34-cp34m-linux_x86_64.whl
+## Linux 64-bit, CPU only, Python 3.5 
+(tensorflow)$ export TF_BINARY_URL=https://ci.tensorflow.org/view/tf-nightly/job/tf-nightly-linux/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3.5,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tf_nightly-1.head-cp35-cp35m-linux_x86_64.whl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;使用pip命令安装tensorflow&quot;&gt;使用pip命令安装tensorflow&lt;/h2&gt;
+&lt;p&gt;选择一种安装环境(Python 3):&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Python 2 
+(tensorflow)# pip install --ignore-installed --upgrade $TF_BINARY_URL 
+
+## Python 3 
+(tensorflow)# pip install --ignore-installed --upgrade $TF_BINARY_URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;使用conda命令安装tensorflow&quot;&gt;使用conda命令安装tensorflow&lt;/h2&gt;
+&lt;p&gt;Using conda参照如下网址: 
+A community maintained conda package is available from conda-forge. 
+https://github.com/conda-forge/tensorflow-feedstock&lt;/p&gt;
+
+&lt;p&gt;Only the CPU version of TensorFlow is available at the moment and can be installed in the conda environment for Python 2 or Python 3.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ source activate tensorflow 
+(tensorflow)# 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Linux/Mac OS X, Python 2.7/3.4/3.5, CPU only:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(tensorflow)# conda install -c conda-forge tensorflow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;参考资料
+【1】https://blog.csdn.net/liuguangrong/article/details/78737419&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Dec 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/12/07/Centos7%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85Anaconda/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/07/Centos7%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85Anaconda/</guid>
+        
+        <category>服务器</category>
+        
+        <category>Centos</category>
+        
+        
+      </item>
     
       <item>
         <title>Centos更新源yum问题解决方法</title>
@@ -381,354 +911,6 @@ F913BE58 42FEA319 F954EFDD AE881E0B
         <guid isPermaLink="true">http://localhost:4000/2018/12/01/Sublime-text3-3176%E7%89%88%E6%9C%AC%E6%BF%80%E6%B4%BB/</guid>
         
         <category>Software</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Django博客开发：通过django-allauth实现第三方账号登录教程</title>
-        <description>&lt;p&gt;因为需要加入博客的用户登录、注册系统，为了让网站支持第三方登录，所以只用使用&lt;strong&gt;django-allauth&lt;/strong&gt;，根据其官方文档这里：&lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=https://django-allauth.readthedocs.io/en/latest/index.html&quot;&gt;https://django-allauth.readthedocs.io/en/latest/index.html&lt;/a&gt;&lt;/strong&gt;），同时支持本地和第三方账号（Github，百度、微博、微信等等。。），集成了邮箱验证、密码修改、本地账号关联（多个）第三方账号等各种功能，真是厉害了。&lt;/p&gt;
-
-&lt;h2 id=&quot;开发环境python-36django-213&quot;&gt;开发环境：python 3.6、django 2.1.3&lt;/h2&gt;
-
-&lt;h2 id=&quot;准备工作&quot;&gt;准备工作：&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;django-allauth
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;!--more--&gt;
-&lt;p&gt;&lt;strong&gt;project/settings.py设置&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INSTALLED_APPS = [# 必须安装的app
-       'django.contrib.auth', 
-       'django.contrib.sites', 'allauth',
-       'allauth.account',   
-       'allauth.socialaccount',
-      # 下面是第三方账号相关的，比如我选了weibo和github 
-      'allauth.socialaccount.providers.weibo', 
-      'allauth.socialaccount.providers.github',
-]
- # django-allauth相关设置
-AUTHENTICATION_BACKENDS = (
-      # django admin所使用的用户登录与django-allauth无关 
-      'django.contrib.auth.backends.ModelBackend',
-      # `allauth` specific authentication methods, such as login by e-mail 
-      'allauth.account.auth_backends.AuthenticationBackend',
-)
-# 前面我们app里添加了django.contrib.sites,需要设置
-SITE_IDSITE_ID = 1
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCOUNT_AUTHENTICATION_METHOD = 'username_email'&lt;/code&gt;的作用是当用户登录时，既可以使用用户名也可以使用email， 其他可选的值是 &lt;strong&gt;“username”&lt;/strong&gt;、&lt;strong&gt;“email”&lt;/strong&gt; ，&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCOUNT_EMAIL_REQUIRED = True&lt;/code&gt;要求用户注册时必须填写email，默认False，email是选填的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;project/urls.py 里include allauth的urls&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;urlpatterns = [ url(r'^accounts/', include('allauth.urls')),]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;设置好后，我们就可以用’accounts/login’ 访问登录页面， ‘accounts/logout’ 注销， 其他的可以去 &lt;strong&gt;allauth/account/urls.py&lt;/strong&gt;查看。&lt;/p&gt;
-
-&lt;p&gt;以上基本设置后，需要同步数据库 &lt;code class=&quot;highlighter-rouge&quot;&gt;python manage.py migrate runserver&lt;/code&gt;, 访问登录页面，allauth提供的模板非常简陋， 是这样的&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e791028bc.png&quot; alt=&quot;201144936.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;我们可以使用自己制作的模板，在&lt;strong&gt;project/templates/account&lt;/strong&gt;下创建login.html即可override allauth自带的模板，allauth自带的模板放在&lt;strong&gt;allauth/templates/account&lt;/strong&gt;下， 我们只需要在项目templates/account下创建相同名字的html即可覆盖。&lt;/p&gt;
-
-&lt;h2 id=&quot;测试&quot;&gt;测试&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;下面我们去注册页面test一下，先注册一个本地账号&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;填写完注册信息后，却出现这样一个错误&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e7b02ee3c.png&quot; alt=&quot;107.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;出现此错误的原因，官方文档也有说明，这是因为注册账号后，系统会自动发一封邮件来激活账号，但是我们还有发送邮件相关的设置。&lt;/p&gt;
-
-&lt;p&gt;django默认使用SMTP发送邮件，在project/settings.py如下设置：&lt;/p&gt;
-&lt;div class=&quot;language-django highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# SMTP服务器，我使用的是sendclound的服务
-EMAIL_HOST = 'smtp.sendcloud.net'
-EMAIL_HOST_USER = '用户名'
-EMAIL_HOST_PASSWORD = '对应的API key或者密码
-'EMAIL_PORT = 25
-# 是否使用了SSL 或者TLS
-EMAIL_USE_SSL = True
-EMAIL_USE_TLS = True
-# 默认发件人，不设置的话django默认使用的webmaster@localhost
-DEFAULT_FROM_EMAIL = 'Aaron-Zhao &lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;noreply@aaron-zhao.com&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;完成以上设置后，注册账号是我们就可以收到邮件了，关于邮件的其他详细设置，请参照&lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=https://docs.djangoproject.com/en/1.10/topics/email/&quot;&gt;django的官方文档&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;allauth默认的设置，当用户登录时会重定向到  /accounts/profile，这个页面allauth没有做，因为报错page not found，这个页面需要我们自己完成（请戳：&lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=http://www.aaron-zhao.com/post/5/&quot;&gt;django博客开发：添加用户资料页面和头像上传功能&lt;/a&gt;&lt;/strong&gt;）。与此相关的参数是&lt;strong&gt;LOGIN_REDIRECT_URL&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;在project/settings.py设置 **LOGIN_REDIRECT_URL = ‘/’ **，这样用户登录后的页面就会跳转到首页，而不是用户profile页面。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;下面我们去测试一下第三方账号登录，这里以github为例&lt;/strong&gt;，&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=https://github.com/settings/applications/new&quot;&gt;Github OAuth注册页面：https://github.com/settings/applications/new&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;要注意将回调地址&lt;strong&gt;callback URL&lt;/strong&gt;设置为 &lt;strong&gt;&lt;a href=&quot;https://link.jianshu.com?t=http://127.0.0.1:8000/accounts/github/login/callback/&quot;&gt;http://127.0.0.1:8000/accounts/github/login/callback/&lt;/a&gt;，&lt;/strong&gt;完成注册后 我们会获得一个Cliend ID 和 Client Secret，后面我们会用到&lt;/p&gt;
-
-&lt;p&gt;先进入admin后台，会发现增加了social accounts和站点&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e7c801608.png&quot; alt=&quot;11145251.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;点开站点管理，将example.com改为我们博客的域名，在开发环境下，我们用127.0.0.1:8000&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e7dc1823d.png&quot; alt=&quot;201145301.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;点击SOCIAL ACCOUNTS下的Social application，增加一个application，如下图所示&lt;/p&gt;
-
-&lt;p&gt;provider选Github，这里的provider就是我们在INSTALLED_APP里增加的socialaccount.provider，client id 和secret key 我们在github注册应用里获得了，将sites加入到右边 选中的sites&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/02/5c02e7ee96095.png&quot; alt=&quot;145409.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;完成以上设置后，注销，然后回到登录页面，选中github登录，授权应用即可，成功登录后，邮箱里也会收到一份激活邮件，这是因为django-allauth会自动为我们添加一个本地账号，根据你的social account用户名和email。&lt;/p&gt;
-
-&lt;h2 id=&quot;其他相关设置&quot;&gt;其他相关设置&lt;/h2&gt;
-
-&lt;p&gt;project/settings.py&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCOUNT_EMAIL_VERIFICATION = 'optional' / 'mandatory' / 'none'&lt;/code&gt; 默认值是’optional’，当其等于’mandatory’时，在email未验证之前，本地注册的用户无法登陆。’optional’ 和 ‘none’ 则不要求必须验证邮箱，两者区别是’optional’ 依然会发送验证邮件，而’none’ 则不会&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SOCIALACCOUNT_EMAIL_VERIFICATION = 'optional' / 'mandatory' / 'none'&lt;/code&gt;与ACCOUNT_EMAIL_VERIFICATION 同理，作用于第三方账号的注册，默认值等于前者，&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LOGIN_URL = '/accounts/login'&lt;/code&gt; 当用户验证邮件里的验证链接后，如果当前没有登录的用户，则会指向LOGIN_URL&lt;/p&gt;
-</description>
-        <pubDate>Sat, 01 Dec 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/</guid>
-        
-        <category>Django</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>VNC和远程桌面的区别</title>
-        <description>&lt;h3 id=&quot;vnc和远程桌面的区别&quot;&gt;VNC和远程桌面的区别&lt;/h3&gt;
-&lt;p&gt;我们可以通过VNC(Virtual Network Computing)和远程桌面来连接到远程的计算机上，但是两者是有一定的区别的。&lt;/p&gt;
-
-&lt;h3 id=&quot;vnc&quot;&gt;VNC&lt;/h3&gt;
-&lt;p&gt;VNC使用的是RFB协议来做屏幕分享和远程操作的软件，由著名的AT&amp;amp;T欧洲研究实验室开发。使用时需要客户端软件和服务器软件配合使用。&lt;/p&gt;
-
-&lt;h3 id=&quot;远程桌面&quot;&gt;远程桌面&lt;/h3&gt;
-&lt;p&gt;远程桌面使用RDP(Remote Desktop Protocol)远程桌面协议，大部分Windows都默认支持此协议，可以远程接入操作桌面。&lt;/p&gt;
-
-&lt;h3 id=&quot;rfb和rdp区别&quot;&gt;RFB和RDP区别&lt;/h3&gt;
-&lt;p&gt;RFB是在服务器端将窗口在显存中画好之后将图像传给客户端，客户端只充当一个图像解码显示的角色； RDP则将画图的工作交给了客户端，服务器需要了解客户端显示能力的具体情况，以便作出相应调整。&lt;/p&gt;
-
-&lt;p&gt;RFB主要传图像，RDP主要传指令。就一般应用而言，RFB数据量太大，RDP对客户端要求较高，因此RFB适用于瘦客户端，RDP适用于低速网络。&lt;/p&gt;
-</description>
-        <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
-        
-        <category>Virtualization</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Keras：安装graphviz和pydot后出现RuntimeError：无法导入pydot</title>
-        <description>&lt;h3 id=&quot;首先conda安装graphviz&quot;&gt;首先Conda安装graphviz：&lt;/h3&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;graphviz 
-pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pydot 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;其次在运行的py文件前面加入如下内容&quot;&gt;其次在运行的.py文件前面加入如下内容:&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PATH&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pathsep&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'C:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Users&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;10057491&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;AppData&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Local&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Continuum&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;anaconda3&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;envs&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;tensorflow&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Library&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;graphviz'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/</guid>
-        
-        <category>Anaconda</category>
-        
-        <category>Keras</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Gitment评论功能接入Jekyll &amp; Hexo教程</title>
-        <description>&lt;h3 id=&quot;前言&quot;&gt;前言&lt;/h3&gt;
-
-&lt;p&gt;之前接入的评论功能，都因为各种原因被放弃了，今天从新计划接入评论功能，所以就在了今天这篇文章。&lt;/p&gt;
-
-&lt;h3 id=&quot;评论模块&quot;&gt;评论模块&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;多说&lt;/strong&gt; - 最多用户使用的评论，但遗憾2017年6月将暂定服务；不建议新用户使用，但为旧用户保留，也感谢多说一路的陪伴；&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;网易云跟帖&lt;/strong&gt; - 网易提供的评论组件，功能比较简单，性能优秀；管理后台在查询上还不算特别智能，但足够普通用户使用；&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;畅言&lt;/strong&gt; - 搜狐提供的评论组件，功能丰富，体验优异；但必须进行域名备案。只要域名备过案就可以通过审核。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Disqus&lt;/strong&gt; - 国外使用较多的评论组件。万里长城永不倒，一枝红杏出墙来，你懂的。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;以上评论模块应该大家都知道，多说和网易云跟帖没有了，畅言要备案，对于对于挂靠在GitHub的博客非常的不友好，放弃！Disqus，不希望自己的博客，可以不分国界！也放弃！&lt;/p&gt;
-
-&lt;p&gt;所以，将是我们要介绍的Gitment!&lt;/p&gt;
-
-&lt;h3 id=&quot;gitment评论模块&quot;&gt;Gitment评论模块&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Gitment is a comment system based on GitHub Issues, which can be used in the frontend without any server-side implementation.&lt;/p&gt;
-
-  &lt;p&gt;Gitment 基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;想了解具体示例，可以点击查看官方Demo Page：&lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fimsun.github.io%2Fgitment%2F&quot;&gt;Gitment Demo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;具体的接入我就不在这里说了，本文末有参考链接大家可以去了解学习，主要是说一下其中的坑点。&lt;/p&gt;
-
-&lt;h3 id=&quot;gitment坑点小结&quot;&gt;Gitment坑点小结&lt;/h3&gt;
-
-&lt;h5 id=&quot;1owner-your-github-id&quot;&gt;1、owner: ‘Your GitHub ID’&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;owner: '你的 GitHub ID',&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;可以是你的GitHub用户名，也可以是github id，建议直接用GitHub用户名就可以。&lt;/p&gt;
-
-&lt;h5 id=&quot;2repo-the-repo-to-store-comments&quot;&gt;2、repo: ‘The repo to store comments&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;repo: '存储评论的 github repo'&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这个是你要存储评论内容的仓库名，可以与博客下的仓库，也可以新建一个仓库专门存储评论内容的。&lt;/p&gt;
-
-&lt;h5 id=&quot;3error-not-found问题&quot;&gt;3、Error: Not Found问题&lt;/h5&gt;
-
-&lt;p&gt;owner或者repo配置错误了，注意名字和仓库名字的大小写。&lt;/p&gt;
-
-&lt;h5 id=&quot;4error-comments-not-initialized&quot;&gt;4、Error: Comments Not Initialized&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在注册OAuth Application这个步骤中，给Authorization callback URL指定的地址错了&lt;/li&gt;
-  &lt;li&gt;还没有在该页面的Gitment评论区登陆GitHub账号&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;如果还是不行，可以参考另一个情况 &lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2Fimsun%2Fgitment%2Fissues%2F95&quot;&gt;Error: Comments Not Initialized · Issue #95 · imsun/gitment&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;5errorvalidation-failed&quot;&gt;5、Error：validation failed&lt;/h5&gt;
-
-&lt;p&gt;issue的标签label有长度限制！labels的最大长度限制是50个字符。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;id: '页面 ID', // 可选。默认为 location.href&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;这个id的作用，就是针对一个文章有唯一的标识来判断这篇本章。&lt;/p&gt;
-
-&lt;p&gt;在issues里面，可以发现是根据网页标题来新建issues的，然后每个issues有两个labels（标签），一个是gitment，另一个就是id。&lt;/p&gt;
-
-&lt;p&gt;所以明白了原理后，就是因为id太长，导致初始化失败，现在就是要让id保证在50个字符内。&lt;/p&gt;
-
-&lt;p&gt;对应配置的id为：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;id: '&amp;lt;%= page.title %&amp;gt;'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;如果用网页标题也不能保证在50个字符！
-最后，我用文章的时间，这样长度是保证在50个字符内，完美解决！（避免了文章每次更新标题或路径时，会重新创建一个issue评论的问题。）&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;id: '&amp;lt;%= page.date %&amp;gt;'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h5 id=&quot;6gitment的汉化&quot;&gt;6、gitment的汉化&lt;/h5&gt;
-
-&lt;p&gt;只需到模板里将原来定义CSS和JS的那两行改成：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;https://billts.site/extra_css/gitment.css&quot;&amp;gt;
-&amp;lt;script src=&quot;https://billts.site/js/gitment.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;即可。来源：&lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2Fimsun%2Fgitment%2Fissues%2F104&quot;&gt;https://github.com/imsun/gitment/issues/104&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;7所有文章一键初始化评论&quot;&gt;7、所有文章一键初始化评论&lt;/h5&gt;
-
-&lt;p&gt;配置正确的文章，第一次显示，提示还没有初始化：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/11/30/5c007d29f22e0.png&quot; alt=&quot;99517-c690c994c6e43496.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;文章作者需要登陆GitHub授权后，会显示初始化按钮(注意，不要多点按钮，否则issues出现多条一样的)：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/11/30/5c007d29f23fb.png&quot; alt=&quot;99517-bddc67793047456b.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;点击初始化按钮后，如果正常就会出现：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/11/30/5c007d29a5614.png&quot; alt=&quot;99517-21a83b5ea0ee7f78.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;关于自动初始化所有文章的功能，到本文编写时，还没有一个完善的解决方法，就是用脚本来执行自动化，有需要的可以详细了解：&lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2Fimsun%2Fgitment%2Fissues%2F5&quot;&gt;https://github.com/imsun/gitment/issues/5&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;8请保持克制切勿滥用&quot;&gt;8、请保持克制，切勿滥用。&lt;/h5&gt;
-
-&lt;p&gt;作者提醒使用本项目的用户，请保持克制，切勿滥用。&lt;a href=&quot;https://link.jianshu.com?t=https%3A%2F%2Fimsun.net%2Fposts%2Fgitment-introduction%2F&quot;&gt;详见 Gitment：使用 GitHub Issues 搭建评论系统&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;9订阅issue&quot;&gt;9、订阅issue&lt;/h5&gt;
-
-&lt;p&gt;issue订阅，有新评论时就可以通过邮件提醒，这个功能是把双刃剑，因为有些垃圾订阅邮件骚扰，大家看着用吧。&lt;/p&gt;
-
-&lt;h3 id=&quot;总结&quot;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;Gitment目前来说，已经解决了一个博客简单的评论功能，点赞 / 有完整的 Markdown / GFM 和代码高亮支持!&lt;/p&gt;
-
-&lt;p&gt;通过Gitment至少可以证明一点，生产力的发展有无限可能，环境的限制，会有的各种奇异的想法，或者奇异的东西出现，Gitment就是一个完美的证明，充分解决了一个简单博客的评论功能。另一方面，与国内的生活要求希望大家能够遵守规则，让GitHub和Gitment在我们生活中快乐成长！&lt;/p&gt;
-</description>
-        <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/</guid>
-        
-        <category>Gitment</category>
-        
-        <category>Jekyll</category>
-        
-        <category>Hexo</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Centos 配置mailx使用外部smtp发送邮件</title>
-        <description>&lt;h2 id=&quot;centos-配置mailx使用外部smtp发送邮件&quot;&gt;Centos 配置mailx使用外部smtp发送邮件&lt;/h2&gt;
-
-&lt;h3 id=&quot;安装mailx&quot;&gt;安装mailx&lt;/h3&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mailx
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;配置mailx&quot;&gt;配置mailx&lt;/h3&gt;
-
-&lt;p&gt;推荐163邮箱，当然，QQ邮箱也是可以的，PS：记得要进邮箱打开SMTP&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/mail.rc //如果不存在，则编辑/etc/nail.rc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 在文件的末尾加入下面代码，相应帐号密码填写自己的帐号密码
-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;xxx@163.com&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.163&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xxx&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;邮箱密码&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smtp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;login&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;使用mailx发送邮件&quot;&gt;使用mailx发送邮件&lt;/h3&gt;
-
-&lt;p&gt;发件人名称可不添加，第二步已配置过
-假设邮件内容存储于mesg文件中，那么可以用如下2个方法：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mailx -s &quot;发件人名称 邮件标题&quot; xxx@163.com &amp;lt; mesg
-cat mesg | mailx -s &quot;发件人名称 邮件标题&quot; xxx@163.com
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;多个收件人之间用逗号分隔：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat mesg | mailx -s &quot;发件人名称 邮件标题&quot; xxx@163.com,xxx2@163.com,xxx3@163.com
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;也可以直接从命令行输入邮件内容：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mailx -s &quot;发件人名称 邮件标题&quot; xxx@163.com ##输入完后回车按Ctrl+D提交发送
-echo hello word | mailx -v -s &quot; title&quot; xxx3@163.com
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;note&quot;&gt;NOTE:&lt;/h4&gt;
-&lt;p&gt;记得要进邮箱打开SMTP
-配置好后，记住查看是否打开代理（例如翻墙VPN）,代理可能会导致Telnet不通25端口&lt;/p&gt;
-</description>
-        <pubDate>Thu, 29 Nov 2018 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
-        
-        <category>Centos</category>
         
         
       </item>

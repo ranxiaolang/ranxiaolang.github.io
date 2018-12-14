@@ -154,6 +154,122 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2018/12/01/Django%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91-%E9%80%9A%E8%BF%87django-allauth%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%95%99%E7%A8%8B/">
+        <h2 class="post-title">
+            Django博客开发：通过django-allauth实现第三方账号登录教程
+        </h2>
+        
+        <div class="post-content-preview">
+            因为需要加入博客的用户登录、注册系统，为了让网站支持第三方登录，所以只用使用django-allauth，根据其官方文档这里：https://django-allauth.readthedocs.io/en/latest/index.html），同时支持本地和第三方账号（Github，百度、微博、微信等等。。），集成了邮箱验证、密码修改、本地账号关联（多个）第三方账号等各种功能，真是厉害了。...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ziran on December 1, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/11/29/VNC%E5%92%8C%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        <h2 class="post-title">
+            VNC和远程桌面的区别
+        </h2>
+        
+        <div class="post-content-preview">
+            VNC和远程桌面的区别
+我们可以通过VNC(Virtual Network Computing)和远程桌面来连接到远程的计算机上，但是两者是有一定的区别的。
+
+VNC
+VNC使用的是RFB协议来做屏幕分享和远程操作的软件，由著名的AT&amp;T欧洲研究实验室开发。使用时需要客户端软件和服务器软件配合使用。
+
+远程桌面
+远程桌面使用RDP(Remote Desktop Protocol)远程...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ziran on November 29, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/11/29/Keras%E5%AE%89%E8%A3%85graphviz%E5%92%8Cpydot%E5%90%8E%E5%87%BA%E7%8E%B0RuntimeError%E6%97%A0%E6%B3%95%E5%AF%BC%E5%85%A5pydot/">
+        <h2 class="post-title">
+            Keras：安装graphviz和pydot后出现RuntimeError：无法导入pydot
+        </h2>
+        
+        <div class="post-content-preview">
+            首先Conda安装graphviz：
+
+pip install graphviz 
+pip install pydot 
+
+其次在运行的.py文件前面加入如下内容:
+
+import os os.environ["PATH"] += os.pathsep + 'C:\\Users\\10057491\\AppData\\Local\\Continuum\\anaconda3\\envs\\te...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ziran on November 29, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/11/29/Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%85%A5Jekyll&Hexo%E6%95%99%E7%A8%8B/">
+        <h2 class="post-title">
+            Gitment评论功能接入Jekyll & Hexo教程
+        </h2>
+        
+        <div class="post-content-preview">
+            前言
+
+之前接入的评论功能，都因为各种原因被放弃了，今天从新计划接入评论功能，所以就在了今天这篇文章。
+
+评论模块
+
+
+  多说 - 最多用户使用的评论，但遗憾2017年6月将暂定服务；不建议新用户使用，但为旧用户保留，也感谢多说一路的陪伴；
+  网易云跟帖 - 网易提供的评论组件，功能比较简单，性能优秀；管理后台在查询上还不算特别智能，但足够普通用户使用；
+  畅言 - 搜狐提供的评论组件...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ziran on November 29, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/11/29/Centos-%E9%85%8D%E7%BD%AEmailx%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8smtp%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">
+        <h2 class="post-title">
+            Centos 配置mailx使用外部smtp发送邮件
+        </h2>
+        
+        <div class="post-content-preview">
+            Centos 配置mailx使用外部smtp发送邮件
+
+安装mailx
+yum install mailx
+
+配置mailx
+
+推荐163邮箱，当然，QQ邮箱也是可以的，PS：记得要进邮箱打开SMTP
+
+vi /etc/mail.rc //如果不存在，则编辑/etc/nail.rc
+
+
+# 在文件的末尾加入下面代码，相应帐号密码填写自己的帐号密码
+set from="xxx@163.com"...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Ziran on November 29, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2018/11/20/jupyter-lab-config-raspi/">
         <h2 class="post-title">
             Jupyter Lab Config on Raspberry Pi
@@ -231,11 +347,15 @@ To deactivate an active environment, use
                             
                         
                             
-                                <a href="/tags/#Raspberry Pi" title="Raspberry Pi" rel="2">
+                                <a href="/tags/#Raspberry Pi" title="Raspberry Pi" rel="3">
                                     Raspberry Pi
                                 </a>
                             
                         
+                            
+                                <a href="/tags/#Centos" title="Centos" rel="2">
+                                    Centos
+                                </a>
                             
                         
                             
@@ -263,9 +383,33 @@ To deactivate an active environment, use
                             
                         
                             
-                        
+                                <a href="/tags/#教程" title="教程" rel="2">
+                                    教程
+                                </a>
                             
                         
+                            
+                                <a href="/tags/#Mac" title="Mac" rel="2">
+                                    Mac
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#服务器" title="服务器" rel="2">
+                                    服务器
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#5G" title="5G" rel="2">
+                                    5G
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#5G核心网" title="5G核心网" rel="2">
+                                    5G核心网
+                                </a>
                             
                         
                     </div>
