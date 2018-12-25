@@ -5,8 +5,8 @@
     <description>回到最初的梦想</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Dec 2018 15:12:58 -0500</pubDate>
-    <lastBuildDate>Fri, 14 Dec 2018 15:12:58 -0500</lastBuildDate>
+    <pubDate>Mon, 24 Dec 2018 21:14:12 -0500</pubDate>
+    <lastBuildDate>Mon, 24 Dec 2018 21:14:12 -0500</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -16,7 +16,7 @@
 
 &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/12/13/5c119b2c3f236.png&quot; alt=&quot;效果图&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;##教程&lt;/p&gt;
+&lt;h2 id=&quot;教程&quot;&gt;教程&lt;/h2&gt;
 
 &lt;h3 id=&quot;一在树莓派下安装plex媒体服务器&quot;&gt;一、在树莓派下安装PLEX媒体服务器&lt;/h3&gt;
 &lt;p&gt;1.在终端，将你的树莓派更新至最新&lt;/p&gt;
